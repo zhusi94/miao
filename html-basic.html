@@ -5,8 +5,8 @@
   <title>html练习</title>
 </head>
 <body>
-<hgroup>
-<h1>Lorem.</h1>
+<hgroup> 
+<h1 id="top">Lorem.</h1>
 <h2>Lorem ipsum.</h2>
 <h3>Lorem ipsum dolor.</h3>
 </hgroup>
@@ -147,7 +147,12 @@
   </tbody>
 </table>
 <hr>
-<img title="image title" src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" width="300">
+<img title="image title" src="https://drscdn.500px.org/photo/174778125/m%3D1170_k%3D1/2841ccf2a3720e8e794a6a6930f6ff2c" width="300"
+usemap="#themap">
+<map name="themap">
+  <area shape="rectangle" coords="50,100,200,200" href="https://www.mi.com" target="_blank" title="abc">
+  <area shape="circle" coords="150,300,100" href="#top">
+</map>
 <hr>
 <p><a href="www.mi.com" target="framel">点击我会在下面的frame里打开小米商城，但为什么打不开呢？</a></p>
 
