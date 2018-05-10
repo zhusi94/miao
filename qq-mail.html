@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <title>qq-mail</title>
+<style >
+html,body{
+  margin:0;
+  padding: 0;
+}
+html{
+  width: 100%;
+}
+body{
+  height: 100%;
+}
+.导航栏{
+  background-color: blue;
+  border: 2px solid;
+  height: 96px;
+  margin:0px;
+  width: auto;
+}
+.侧边栏{
+  position: absolute;
+  background-color: green;
+  top:100px;        /*搞不懂*/
+  /*html和body需设置padding*/
+  width: 196px;
+  border: 2px solid;
+  bottom:0;
+}
+/*检查html像素为1042*116
+  导航栏宽度为auto 实际为1022*96*/
+   /* QQ邮箱的属性：
+    position: absolute;
+    top: 77px;
+    width: 179px;
+    bottom: 0;         */
+
+</style>
+</head>
+<body>
+  <div class="导航栏"></div>
+  <div class="侧边栏"></div>
+</body>
