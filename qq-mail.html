@@ -22,25 +22,32 @@ body{
   width: auto;
 }
 .侧边栏{
-  position: absolute;
+  position: absolute; /*绝对定位*/
   background-color: green;
   top:100px;        /*搞不懂*/
   /*html和body需设置padding*/
   width: 196px;
   border: 2px solid;
+  border-top: none;
   bottom:0;
 }
 /*检查html像素为1042*116
   导航栏宽度为auto 实际为1022*96*/
    /* QQ邮箱的属性：
-    position: absolute;
+    position: absolute;   
     top: 77px;
     width: 179px;
     bottom: 0;         */
-
+.main{
+  background-color: red;
+  margin-left: 200px;
+  margin-top: 0;
+  height: calc(100vh - 100px);
+}
 </style>
 </head>
 <body>
   <div class="导航栏">这是导航栏<span> 宽度auto高度100（包含边框）</span></div>
   <div class="侧边栏"><span>这是侧边栏宽度200（包含边框）高度无限</span></div>
+  <div class="main">main</div>
 </body>
