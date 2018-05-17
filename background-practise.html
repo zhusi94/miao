@@ -8,11 +8,11 @@
       margin: 0;
       padding: 0;
     }
-    div{
+    .book{
       background: white url(glassy-ripple.jpg) 0 0 no-repeat fixed;
       margin: 5em 5em 10em 5em;
       padding: 10px;
-      color: black;
+      csolor: black;
       font-family: Arial, sans-serif;
       border: solid #963;
 
@@ -45,6 +45,7 @@
       background-attachment: fixed;
       -webkit-background-size: 100%;
       background-size: 100%;
+      margin-bottom: 100px;
     }
     .car-black{
       
@@ -65,12 +66,26 @@
       -webkit-background-size: 100%;
       background-size: 100%;
     }
-
+    .mi{
+      background: white url(sss.png) 0 0 no-repeat ;
+      background-position: -200px 200px;
+      background-attachment: fixed;
+      margin-top: 0px;
+      height: 500px;
+      width: 500px;
+      -webkit-background-size: 300px 300px;
+      background-size: 300px 300px;
+      border:1px solid green;
+      transition: 1s;
+    }
+    .mi:hover{
+      background-position: 0 200px;
+    }
 
   </style>
 </head>
 <body>
-  <div>
+  <div class="book">
     <h1>Lorem  </h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, natus quidem pariatur architecto qui libero eius? Necessitatibus hic, expedita voluptatem non excepturi odio neque eveniet inventore libero similique, sint minus!</p>
     <h2>Lorem ipsum dolor sit amet.</h2>
@@ -90,5 +105,7 @@
   <div class="car-bg"></div>
   <div class="car-black"></div>
   <div class="car-red"></div>
+  <p font-size="50px" color="white">mi:</p>
+  <div class="mi"></div>
 </body>
 </html>
