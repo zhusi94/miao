@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>table</title>
+  <style type="text/css">
+    div[class=table-responsive]{
+      overflow: scroll;
+    }
+    table{
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 1rem;
+      border-collapse: collapse;
+      box-sizing: border-box;
+      border-spacing: 2px;
+      border-color: grey;
+      text-align: left;
+    }
+    thead th[class=table-responsive1]{
+      padding:0.75rem;
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+    tr th[class=table-responsive]{
+      
+      border-bottom: 1px solid #dee2e6;
+    }
+    tr td{
+      padding: .75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .table-dark{
+      color: white;
+      background-color:#212529;
+    }
+    .table-dark thead th{
+      padding:0.75rem;
+      vertical-align: bottom;
+      border-bottom: 2px solid #32383e;
+    }
+    .table-dark tbody th{
+      padding:0.75rem;
+      vertical-align: bottom;
+      border-bottom: 1px solid #32383e;
+    }
+    .table-dark tbody td{
+      padding:0.75rem;
+      vertical-align: bottom;
+      border-bottom: 1px solid #32383e;
+    }    
+    .table-bordered td,.table-bordered th{
+      border: 1px solid #dee2e6;
+    }
+    .table-bordered thead th{
+      
+      border-bottom:  4px solid #dee2e6;
+    }
+    .table-bordered th{
+      border-bottom:  1px solid #dee2e6;
+    }
+
+    .table-hover{
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 1rem;
+      border-collapse: collapse;
+      box-sizing: border-box;
+      border-spacing: 2px;
+      border-color: grey;
+      text-align: left;
+    }
+    .table-hover tbody :hover{
+      background-color: rgb(236,236,236);
+    }
+    .table-hover thead th{
+      
+      border-bottom:  2px solid #dee2e6;
+    }
+    .table-hover tbody th{
+      
+      border-bottom:  1px solid #dee2e6;
+    }
+
+
+    .table-striped tbody tr:nth-child(2n-1){
+      background-color: rgb(242,242,242);
+    }
+    .table-striped thead th{
+      border-bottom:  2px solid #dee2e6;
+    }
+    .table-striped tbody th{
+      border-bottom:  1px solid #dee2e6;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="table-responsive">
+    <table class="table-responsive">
+      <caption class="table-responsive">caption</caption>
+      <thead class="table-responsive">
+        <th class="table-responsive1">1</th>
+        <th class="table-responsive1">2</th>
+        <th class="table-responsive1">3</th>
+        <th class="table-responsive1">4</th>
+        <th class="table-responsive1">5</th>
+        <th class="table-responsive1">6</th>
+        <th class="table-responsive1">7</th>
+        <th class="table-responsive1">8</th>
+      </thead>
+      <tr class="table-responsive">
+        <th class="table-responsive">001</th>
+        <td>002</td>
+        <td>003</td>
+        <td>004</td>
+        <td>005</td>
+        <td>006</td>
+        <td>007</td>
+        <td>008</td>
+      </tr>
+      <tr class="table-responsive">
+        <th class="table-responsive">001</th>
+        <td>002</td>
+        <td>003</td>
+        <td>004</td>
+        <td>005</td>
+        <td>006</td>
+        <td>007</td>
+        <td>008</td>
+      </tr>
+      <tr class="table-responsive">
+        <th class="table-responsive">001</th>
+        <td>002</td>
+        <td>003</td>
+        <td>004</td>
+        <td>005</td>
+        <td>006</td>
+        <td>007</td>
+        <td>008</td>
+      </tr>
+      <tr class="table-responsive">
+        <th class="table-responsive">001</th>
+        <td>002</td>
+        <td>003</td>
+        <td>004</td>
+        <td>005</td>
+        <td>006</td>
+        <td>007</td>
+        <td>008</td>
+      </tr>
+      <tr class="table-responsive">
+        <th class="table-responsive">001</th>
+        <td>002</td>
+        <td>003</td>
+        <td>004</td>
+        <td>005</td>
+        <td>006</td>
+        <td>007</td>
+        <td>008</td>
+      </tr>
+    </table>
+  </div>
+  
+  <table class="table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br><br>
+
+
+
+
+
+
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br><br><br><br>
+
+<table class="table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<br><br><br><br><br>
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</body>
+</html>

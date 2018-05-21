@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>twitter dianzan</title>
+  <style type="text/css">
+    .dianzan{
+      display: none;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      xborder: 1px solid;
+      background-color: white;
+      background-image: url(web_heart_animation_edge.png);
+      xtransition-duration: .8s;
+      xtransition-timing-function: steps(28);
+    }
+    input:checked + label .box
+    {
+      background-position: -2800px 0px;
+      transition-duration: .8s;
+      transition-timing-function: steps(28);
+    }
+    .ios{
+      position: relative;
+      height: 100px;
+      width: 200px;
+      background-color: gray;
+      border-radius: 99999px;
+      transition-duration: 1s;
+    }
+    .yuan{  
+      xmargin: 0px;
+      border:1px solid blue;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 100px;
+      width: 100px;
+      background-color: white;
+      border-radius: 99999px;
+      transition-duration: 1s;
+    }
+    .yuan:active{
+      
+      height: 100px;
+      width: 120px;
+      background-color: white;
+      border-radius: 99999px;
+      transition-duration: 0.2s;
+    }
+    input:checked + label .yuan{
+
+      top: 0px;
+      left: 101px;
+      position: absolute;
+      transition-duration: 1s; 
+    }
+
+    input:checked + label .ios{
+      background-color: green;
+      transition-duration: 1s;
+    }
+    #ioscheck{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<p>点赞：</p>
+<div>
+  <input class="dianzan" type="checkbox" name="" id="gender">
+  <label for="gender"><div class="box"></div></label>
+</div>
+<hr><hr><hr><hr><hr>
+<p>IOS checkbox:</p>
+<input type="checkbox" id="ioscheck" name="">
+<label for="ioscheck">
+<div class="ios">
+  <div class="yuan">
+  </div>
+</div>
+</label>
+</body>
+</html>
