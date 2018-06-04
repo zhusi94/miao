@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>小米商城</title>
+  <link rel="stylesheet" type="text/css" href="iconfont.css">
   <style type="text/css">
     html,body{
       margin:0;
@@ -39,6 +40,7 @@
       margin-right: auto;
       margin-left: auto;
     }
+
     .sit-topbar a{
       color: #b0b0b0;
     }
@@ -74,6 +76,37 @@
       background-size: 20px 20px;
       background-repeat: no-repeat;  
       background-position: 9px 50%;
+      
+    }
+    .cart-box{
+      position: absolute;
+      margin:0;
+      padding: 0
+      width: 0;
+      height: 0;
+      font-size: 0;
+      transition:height .2s;
+    }
+    .cart:hover .cart-box{
+      color: #000;
+      display: inline-block;
+      position: absolute;
+      top: 40px;
+      right:  0px;
+      height: 100px;
+      width: 320px;
+      background-color: #ddd;
+      z-index: 999;
+      text-align: center;
+      line-height: 100px;
+      font-size: 12px;
+    }
+    .cart:hover a{
+      color: #ff6700;
+    }
+    .cart:hover{
+      background-color: white;
+      background-image: url(cart-huang.png);
     }
     .navigation-bar{
       position: relative;
@@ -84,6 +117,7 @@
      xbackground-color: #ccc;
       vertical-align: middle;
     }
+    
     .mi-home{
       float: left;
       width: 50px;
@@ -192,6 +226,202 @@
       display: block;
       position: absolute;
     }
+    .gundong{
+      max-width: 1226px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 460px;
+      background-color: #aaa;
+    }
+    .gundong a img{
+      width: 100%;
+      height: 100%;
+    }
+    .home{
+      position: relative;
+      max-width: 1226px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .rukou::after{
+      content: '';
+      clear: both;
+      display: block;
+      height: 0;
+    }
+    .zuo{
+      margin-top: 0.7em;
+      width: 234px;
+      height: 170px;
+      float: left;
+      background-color: #5f5750;
+    }
+    .zuo ul{
+      height: 100%;
+      margin-bottom: 0;
+      list-style: none;
+      padding-left:4px;
+      overflow: hidden;
+     }
+    .zuo ul li{
+      display: block;
+      width: 28%;
+      height: 37%;
+      float: left;
+      margin:5px;
+      xborder:1px solid;
+      text-align: center;
+      vertical-align: bottom;
+      border-right: 2px solid #665e57;
+      border-bottom: 2px solid #665e57;
+    }
+    .zuo ul li a{
+      display: block;
+      padding-top: 40px;
+      padding-bottom: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;     
+      background-image: url(Mobile-phone.png);
+      background-repeat: no-repeat;
+      background-position: 50% 0;
+    }
+    .zuo ul li a:hover{
+      background-image: url(phone-f.png);
+      background-position: 50% 0;
+      color: #fff;
+    }
+
+    .you{
+      float: right;
+    }
+    .rukou-list{
+      margin-top: 0.7em;
+      padding: 0;
+      list-style: none;
+      display: table;
+      Xfloat: right;
+    }
+    .rukou-item{
+      display: inline-block;
+      margin-left:0.9em;
+    }
+    .rukou-item a{
+      display: block;
+    }
+    .rukou-item a img{
+      width: 316px;
+      height: 170px;
+    }
+    .title{
+      font-size: 22px;
+      font-weight: 200;
+      line-height: 58px;
+      color: #333;
+    }
+    .daojishi{
+      border-top: 1px solid red;
+      background-image: url(flashpurchase.png);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      width: 234px;
+      height: 340px;
+      margin-right: 14px;
+      float: left;
+    }
+    .shangou{
+      width: 100%;
+      height: 339px;
+      position: relative;
+
+    }
+    .shangpin{
+      float: right;
+      width: 978px;
+      height: 340px;
+      overflow: hidden;
+      position: relative;
+    }
+    #r1{
+      position: absolute;
+      top:-50px;
+      right: 40px;
+    }
+    #r2{
+      position: absolute;
+      top:-50px;
+      right: 0;
+    }
+    .shangpin ul{
+      margin:0;
+      padding:0;
+      text-align: right;
+    }
+    .shangpin ul li{
+      margin-right: 6px;
+      list-style: none;
+      display: inline-block;
+      height: 339px;
+      width: 234px;
+      background-color: #eee;
+    }
+    .shangpin ul li:last-child{
+      margin-right: 0;
+    }
+    .shangpin ul li a{
+      margin:0;
+      padding:0;
+      width: 100%;
+      height: 100%;
+    }
+    .shangpin ul li a img{
+      margin:0;
+      padding:0;
+      width: 100%;
+      height: 100%;
+    }
+    .shangpin div{
+      width: 100%;
+      transition: 1s;
+    }
+    .shangpin .qian{
+      position: absolute;
+      left: -100%;    
+    }
+    .shangpin .hou{
+      position: absolute;
+      left: 105%;      
+    }
+    #r1:checked~.shangpin .qian{
+      position: absolute;
+      left: 0;
+      top:0;
+    }
+    #r2:checked+.shangpin .hou{
+      position: absolute;
+      left: 0;
+    }
+    .home a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .home>a>img{
+      width: 100%;
+      height: 100%;
+    }
+    .box-hd{
+      position: relative;
+      background-color: #f5f5f5;
+    }
+    .box-hd .chakan{
+      position: absolute;
+      right: 0;
+      top: 5px;
+    }
+    .box-hd .chakan:hover>a{
+      color: #ff6700;
+    }
   </style>
 </head>
 <body>
@@ -218,10 +448,12 @@
         <a href="https://order.mi.com/message/list">消息</a>
         <span>|</span>
         <div class="cart">
-          <a  href="https://static.mi.com/cart/">购物车</a>
+          <a  href="https://static.mi.com/cart/">购物车(0)</a>
+          <div class="cart-box">购物车中还没有商品，赶紧选购吧！</div>
         </div>
       </div>
-    </div></div>
+    </div>
+  </div>
   <div class="navigation-bar">
     <div class="bao" id="uuu">
       <div class="mi-home"><a class="link-home" href="//mi.com"></a></div>
@@ -233,7 +465,7 @@
             s
             </div>
           </li>
-          <li><a href="">红米</a></li>
+          <li><span class=".icon-shoujidaoshouji"></span><a href="">红米</a></li>
           <li><a href="">电视</a></li>
           <li><a href="">笔记本</a></li>
           <li><a href="">盒子</a></li>
@@ -252,6 +484,62 @@
         </form>
       </div>
     </div>
+  </div>
+  <div class="gundong">
+    <a href="https://www.mi.com/a/h/5874.html?client_id=180100031058&masid=17409.0370"><img src="https://i1.mifile.cn/a4/xmad_15271710497377_HjYWq.jpg"></a>
+  </div>
+  <div class="home">
+    <div class="rukou">
+    <div class="zuo">
+      <ul>
+        <li><a href="" class="phone">选购手机</a></li>
+        <li><a href="">企业团购</a></li>
+        <li><a href="">F码通道</a></li>
+        <li><a href="">米粉卡</a></li>
+        <li><a href="">以旧换新</a></li>
+        <li><a href="">话费充值</a></li>
+      </ul>
+    </div>
+    <div class="you">
+      <ul class="rukou-list">
+        <li class="rukou-item"><a href="https://item.mi.com/product/10000083.html"><img src="xmad_15248252106128_BeQXt.jpg" alt=""></a></li>
+        <li class="rukou-item"><a href="https://item.mi.com/product/10000064.html"><img src="xmad_15266345206274_OkGLS.jpg" alt=""></a></li>
+        <li class="rukou-item"><a href="https://www.mi.com/roomrobot"><img src="517bd60e-9acc-42ca-ae51-df9cd7a5df2d.jfif" alt=""></a></li>
+      </ul>
+    </div>
+    </div>
+  <h2 class="title">小米闪购</h2>
+  <div class="shangou ">
+    <div class="daojishi">
+      <p>10:00 场</p>
+      <br><br><br><br><br><br><br>
+      <p>距离结束还有</p>      
+    </div>
+    <input type="radio" id="r1" name="shangou" checked="ture">
+    <input type="radio" id="r2" name="shangou">
+    <div class="shangpin">      
+      <div class="qian">
+        <ul>
+          <li><a href="https://www.mi.com/seckill" target="blank"><img src="shoubiao.png"></a></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="hou">
+        <ul>
+          <li><a href="https://www.mi.com/seckill" target="blank"><img src="cheng.png"></a></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <a href="https://item.mi.com/product/10000089.html"><img src="https://i1.mifile.cn/a4/xmad_15236124748626_jUQzY.jpg"></a>
+  <div class="box-hd">
+    <h2 class="title">手机</h2>
+    <div class="chakan"><a href="https://www.mi.com/p/1915.html">查看全部</a></div>
   </div>
 </body>
 </html>
