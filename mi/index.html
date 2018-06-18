@@ -3,428 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>小米商城</title>
+  <link rel="stylesheet" type="text/less"  href="mi.less">
+       <!-- <link rel="stylesheet" type="text/css" href="mi.css"> -->
   <link rel="stylesheet" type="text/css" href="iconfont.css">
-  <style type="text/css">
-    html,body{
-      margin:0;
-      padding:0;
-      width: 100%;
-      min-width: 1226px;
-    }
-    a {
-      color: #757575;
-      text-decoration: none;
-    }
-    .sit-bn-bar{
-      background-image: url(https://i1.mifile.cn/a4/cms_15270400062082_IKomG.jpg);
-      width: 100%;
-      background-repeat: no-repeat;
-      background-position: center 0;
-    }
-    .sit-bn-bar-link{
-      display: block;
-      width: 100%;
-      height: 120px;
-      text-indent: -9999em;
-    }
-    .sit-topbar{
-      position: relative;    
-      xz-index: 30;
-      height: 40px;
-      font-size: 12px;
-      color: #b0b0b0;
-      background: #333;
-    }
-    .bao{
-      max-width: 1226px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .sit-topbar a{
-      color: #b0b0b0;
-    }
-    .sit-topbar span{
-      margin: 0 .5em;
-      color: #424242;
-      font-family: sans-serif;
-    }
-    .container{
-     
-      margin-right: auto;
-      margin-left: auto;
-      line-height: 40px;
-      float: left;
-    }
-    .sit-topbar-right{
-      float: right;
-      text-align: right;
-      line-height: 40px;
-      font-size: 13px;
-    }
-    .cart{
-      position: relative;
-      display: inline-block;
-      background-color: #424242;
-      padding-left: 38px;
-      padding-right: 20px;
-      cursor: pointer;
-    }
-    .cart{
-      color: white;
-      background-image: url(cart.png);
-      background-size: 20px 20px;
-      background-repeat: no-repeat;  
-      background-position: 9px 50%;
-      
-    }
-    .cart-box{
-      position: absolute;
-      margin:0;
-      padding: 0
-      width: 0;
-      height: 0;
-      font-size: 0;
-      transition:height .2s;
-    }
-    .cart:hover .cart-box{
-      color: #000;
-      display: inline-block;
-      position: absolute;
-      top: 40px;
-      right:  0px;
-      height: 100px;
-      width: 320px;
-      background-color: #ddd;
-      z-index: 999;
-      text-align: center;
-      line-height: 100px;
-      font-size: 12px;
-    }
-    .cart:hover a{
-      color: #ff6700;
-    }
-    .cart:hover{
-      background-color: white;
-      background-image: url(cart-huang.png);
-    }
-    .navigation-bar{
-      position: relative;
-      height: 100px;
-      xbackground-color: #eee;
-    }
-    #uuu{
-     xbackground-color: #ccc;
-      vertical-align: middle;
-    }
-    
-    .mi-home{
-      float: left;
-      width: 50px;
-      height: 50px;
-      margin-top: 22px;
-      margin-right: 5px;
-      top: 50%;
-    }
-    .link-home{
-      display: block;
-      width: 50px;
-      height: 50px;
-      background-color: #ff6700;
-      background-image: url(mi-home.png),url(mi-logo.png);
-      background-repeat: no-repeat;
-      background-position: -50px 0,0 0;
-      transition: .2s;
-    }
-    .link-home:hover{
-      background-position: 0 0,50px 0;
-    }
-    .head-nav{
-      float: left;
-      width: 850px;
-      xbackground-color: #bbb;
-    }
-    .nav-list{
-      position: relative;
-      xz-index: 10;
-      float: left;
-      width: 820px;
-      height: 88px;
-      margin: 0;
-      padding: 12px 0 0 30px;
-      list-style-type: none;
-      font-size: 16px;
-    }
-    .nav-list li{
-      display: inline-block;
-      word-spacing: 0px;
-    }
-    #kongbai{
-      position: relative;
-      float: left;
-      width: 127px;
-      height: 100%;
-      padding-right: 15px;
-    }
-    .nav-list li a{
-      display: block;
-      padding: 26px 10px 38px;
-      color: #333;
-    }
-    .nav-list li a:hover{
-      color: red;
-    }
-    .heard-search{
-      position: relative;
-      float: right;
-      height: 88px;
-      
-    }
-    .search{
-      outline: 0;
-      border:  1px #000 solid;
-      height: 40px;
-      width: 249px;
-      line-height: 20px;
-      margin-top: 27px;
-      margin-left: 20px;
-    }
-    .search-submit{
-      float: right;
-      outline: 0;
-      position: relative;
-      top:27px;
-      xmargin-top: 17px;
-      width: 50px;
-      height: 44px;
-      border:  1px #000 solid;
-      border-left: 0;
-      margin:0;
-      padding:0;
-      background-color: #fff;
-      background-image: url(search.png);
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size:20px 20px;
-    }
-    .search-submit:hover{
-      color: white;
-      background-color: #ff6700;
-    }
-    .tanchu{
-      display: none;
-      position: absolute;
-      top: 100px;
-      left: 0;
-      width: 100%;
-      height: 229px;
-      border-top: 1px solid #e0e0e0;
-      background-color: #999;
-    }
-    .nav-list li a:hover+.tanchu{
-      xbackground-color: red;
-      display: block;
-      position: absolute;
-    }
-    .gundong{
-      max-width: 1226px;
-      margin-left: auto;
-      margin-right: auto;
-      height: 460px;
-      background-color: #aaa;
-    }
-    .gundong a img{
-      width: 100%;
-      height: 100%;
-    }
-    .home{
-      position: relative;
-      max-width: 1226px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .rukou::after{
-      content: '';
-      clear: both;
-      display: block;
-      height: 0;
-    }
-    .zuo{
-      margin-top: 0.7em;
-      width: 234px;
-      height: 170px;
-      float: left;
-      background-color: #5f5750;
-    }
-    .zuo ul{
-      height: 100%;
-      margin-bottom: 0;
-      list-style: none;
-      padding-left:4px;
-      overflow: hidden;
-     }
-    .zuo ul li{
-      display: block;
-      width: 28%;
-      height: 37%;
-      float: left;
-      margin:5px;
-      xborder:1px solid;
-      text-align: center;
-      vertical-align: bottom;
-      border-right: 2px solid #665e57;
-      border-bottom: 2px solid #665e57;
-    }
-    .zuo ul li a{
-      display: block;
-      padding-top: 40px;
-      padding-bottom: 10px;
-      color: rgba(255,255,255,0.7);
-      font-size: 12px;     
-      background-image: url(Mobile-phone.png);
-      background-repeat: no-repeat;
-      background-position: 50% 0;
-    }
-    .zuo ul li a:hover{
-      background-image: url(phone-f.png);
-      background-position: 50% 0;
-      color: #fff;
-    }
-
-    .you{
-      float: right;
-    }
-    .rukou-list{
-      margin-top: 0.7em;
-      padding: 0;
-      list-style: none;
-      display: table;
-      Xfloat: right;
-    }
-    .rukou-item{
-      display: inline-block;
-      margin-left:0.9em;
-    }
-    .rukou-item a{
-      display: block;
-    }
-    .rukou-item a img{
-      width: 316px;
-      height: 170px;
-    }
-    .title{
-      font-size: 22px;
-      font-weight: 200;
-      line-height: 58px;
-      color: #333;
-    }
-    .daojishi{
-      border-top: 1px solid red;
-      background-image: url(flashpurchase.png);
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      width: 234px;
-      height: 340px;
-      margin-right: 14px;
-      float: left;
-    }
-    .shangou{
-      width: 100%;
-      height: 339px;
-      position: relative;
-
-    }
-    .shangpin{
-      float: right;
-      width: 978px;
-      height: 340px;
-      overflow: hidden;
-      position: relative;
-    }
-    #r1{
-      position: absolute;
-      top:-50px;
-      right: 40px;
-    }
-    #r2{
-      position: absolute;
-      top:-50px;
-      right: 0;
-    }
-    .shangpin ul{
-      margin:0;
-      padding:0;
-      text-align: right;
-    }
-    .shangpin ul li{
-      margin-right: 6px;
-      list-style: none;
-      display: inline-block;
-      height: 339px;
-      width: 234px;
-      background-color: #eee;
-    }
-    .shangpin ul li:last-child{
-      margin-right: 0;
-    }
-    .shangpin ul li a{
-      margin:0;
-      padding:0;
-      width: 100%;
-      height: 100%;
-    }
-    .shangpin ul li a img{
-      margin:0;
-      padding:0;
-      width: 100%;
-      height: 100%;
-    }
-    .shangpin div{
-      width: 100%;
-      transition: 1s;
-    }
-    .shangpin .qian{
-      position: absolute;
-      left: -100%;    
-    }
-    .shangpin .hou{
-      position: absolute;
-      left: 105%;      
-    }
-    #r1:checked~.shangpin .qian{
-      position: absolute;
-      left: 0;
-      top:0;
-    }
-    #r2:checked+.shangpin .hou{
-      position: absolute;
-      left: 0;
-    }
-    .home a{
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-    .home>a>img{
-      width: 100%;
-      height: 100%;
-    }
-    .box-hd{
-      position: relative;
-      background-color: #f5f5f5;
-    }
-    .box-hd .chakan{
-      position: absolute;
-      right: 0;
-      top: 5px;
-    }
-    .box-hd .chakan:hover>a{
-      color: #ff6700;
-    }
-  </style>
+  <script src="less.min.js"></script>
 </head>
 <body>
+<div class="quanbu">
   <div class="sit-bn-bar"><a class="sit-bn-bar-link" href="https://www.mi.com/a/h/5857.html?client_id=180100041086&masid=17409.0368"></a></div>
   <div class="sit-topbar">
     <div class="bao ">
@@ -449,97 +34,458 @@
         <span>|</span>
         <div class="cart">
           <a  href="https://static.mi.com/cart/">购物车(0)</a>
-          <div class="cart-box">购物车中还没有商品，赶紧选购吧！</div>
+          <div class="cart-box">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="navigation-bar">
-    <div class="bao" id="uuu">
+
+    <div id="uuu">
       <div class="mi-home"><a class="link-home" href="//mi.com"></a></div>
       <div class="head-nav">
-        <ul class="nav-list">
+        <ul class="kongbai">
           <li id="kongbai"></li>
+        </ul>
+        <ul class="nav-list">
           <li><a id="t" href="">小米手机</a>
             <div class="tanchu">
-            s
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div> 
+          </li>
+          <li>
+            <span class=".icon-shoujidaoshouji"></span><a href="">红米</a>
+            <div class="tanchu" style="background:green">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div> 
+          </li>
+          <li><a href="">电视</a>
+            <div class="tanchu" style="background:aqua">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
             </div>
           </li>
-          <li><span class=".icon-shoujidaoshouji"></span><a href="">红米</a></li>
-          <li><a href="">电视</a></li>
-          <li><a href="">笔记本</a></li>
-          <li><a href="">盒子</a></li>
-          <li><a href="">新品</a></li>
-          <li><a href="">路由器</a></li>
-          <li><a href="">智能硬件</a></li>
+          <li><a href="">笔记本</a>
+            <div class="tanchu" style="background:#f8cf05">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div>
+          </li>
+          <li><a href="">盒子</a>
+            <div class="tanchu" style="background:#ddf60f">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div>
+          </li>
+          <li><a href="">新品</a>          
+            <div class="tanchu" style="background:#53f400">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div>
+          </li>
+          <li><a href="">路由器</a>
+            <div class="tanchu" style="background:#0466f8">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div>
+          </li>
+          <li><a href="">智能硬件</a>
+            <div class="tanchu" style="background:#8304f8">
+              <ul>
+                <li>产品1</li>
+                <li>产品2</li>
+                <li>产品3</li>
+                <li>产品4</li>
+                <li>产品5</li>
+            </div>
+          </li>
+        </ul>
+        <ul class="shequ">
           <li><a href="">服务</a></li>
           <li><a href="">社区</a></li>
         </ul>
-        
+             
       </div>
+    
       <div class="header-search">
         <form action="https://search.mi.com/search">
-          <input type="text" class="search" name="keyword">
+          <input type="text" class="search" autoComplete="Off" name="keyword">
+          <ul class="suggest-keyword">
+            <li><a href="https://www.mi.com/mi8/">小米8</a></li>
+            <li><a href="https://www.mi.com/a/h/6007.html?client_id=180100041086&masid=17409.0378">618主会场</a></li>
+          </ul>
           <input type="submit" value='' class="search-submit" name="">
+          <ul class="dropdown-keyword">
+              <li><a href="https://search.mi.com/search_%E5%B0%8F%E7%B1%B36X">小米6X</a></li>
+              <li><a href="https://search.mi.com/search_%E5%B0%8F%E7%B1%B3MIX%C2%A02S">小米MIX 2S</a></li>
+              <li><a href="https://search.mi.com/search_%E9%BB%91%E9%B2%A8%E6%B8%B8%E6%88%8F%E6%89%8B%E6%9C%BA">黑鲨游戏手机</a></li>
+              <li><a href="https://search.mi.com/search_%E7%BA%A2%E7%B1%B3Note%C2%A05">红米Note 5</a></li>
+              <li><a href="https://search.mi.com/search_%E7%BA%A2%E7%B1%B35A">红米5A</a></li>
+          </ul>      
         </form>
       </div>
     </div>
   </div>
-  <div class="gundong">
-    <a href="https://www.mi.com/a/h/5874.html?client_id=180100031058&masid=17409.0370"><img src="https://i1.mifile.cn/a4/xmad_15271710497377_HjYWq.jpg"></a>
-  </div>
-  <div class="home">
-    <div class="rukou">
-    <div class="zuo">
-      <ul>
-        <li><a href="" class="phone">选购手机</a></li>
-        <li><a href="">企业团购</a></li>
-        <li><a href="">F码通道</a></li>
-        <li><a href="">米粉卡</a></li>
-        <li><a href="">以旧换新</a></li>
-        <li><a href="">话费充值</a></li>
-      </ul>
-    </div>
-    <div class="you">
-      <ul class="rukou-list">
-        <li class="rukou-item"><a href="https://item.mi.com/product/10000083.html"><img src="xmad_15248252106128_BeQXt.jpg" alt=""></a></li>
-        <li class="rukou-item"><a href="https://item.mi.com/product/10000064.html"><img src="xmad_15266345206274_OkGLS.jpg" alt=""></a></li>
-        <li class="rukou-item"><a href="https://www.mi.com/roomrobot"><img src="517bd60e-9acc-42ca-ae51-df9cd7a5df2d.jfif" alt=""></a></li>
-      </ul>
-    </div>
-    </div>
-  <h2 class="title">小米闪购</h2>
-  <div class="shangou ">
-    <div class="daojishi">
-      <p>10:00 场</p>
-      <br><br><br><br><br><br><br>
-      <p>距离结束还有</p>      
-    </div>
-    <input type="radio" id="r1" name="shangou" checked="ture">
-    <input type="radio" id="r2" name="shangou">
-    <div class="shangpin">      
-      <div class="qian">
-        <ul>
-          <li><a href="https://www.mi.com/seckill" target="blank"><img src="shoubiao.png"></a></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+  <div class="main">
+      <div class="gundong">
+        <a href="https://www.mi.com/a/h/5874.html?client_id=180100031058&masid=17409.0370"><img src="https://i1.mifile.cn/a4/xmad_15271710497377_HjYWq.jpg"></a>
+        <div class="duojicaidan">
+          <ul>
+            <li><a href="https://www.mi.com/p/1915.html">手机 电话卡</a>
+              <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+              </ul></li>
+            <li><a href="https://www.mi.com/p/1995.html">电视 盒子</a>
+              <ul>
+                <li>01<a href="#"></a></li>
+                <li>02<a href="#"></a></li>
+                <li>03<a href="#"></a></li>
+                <li>04<a href="#"></a></li>
+                <li>05<a href="#"></a></li>
+                <li>06<a href="#"></a></li>
+                <li>07<a href="#"></a></li>
+                <li>08<a href="#"></a></li>
+                <li>09<a href="#"></a></li>
+                <li>10<a href="#"></a></li>
+                <li>11<a href="#"></a></li>
+                <li>12<a href="#"></a></li>
+                <li>13<a href="#"></a></li>
+                <li>14<a href="#"></a></li>
+                <li>15<a href="#"></a></li>
+                <li>16<a href="#"></a></li>
+                <li>17<a href="#"></a></li>
+                <li>18<a href="#"></a></li>
+                <li>19<a href="#"></a></li>
+                <li>20<a href="#"></a></li>
+              </ul>
+            </li>
+            <li><a href="https://www.mi.com/p/2074.html">笔记本</a></li>
+            <li><a href="https://www.mi.com/p/3469.html?client_id=180100041086&masid=17409.0245">智能 家电</a></li>
+            <li><a href="https://www.mi.com/p/3507.html?client_id=180100041086&masid=17409.0240">健康 家居</a></li>
+            <li><a href="https://www.mi.com/p/3468.html?client_id=180100041086&masid=17409.0246">出行 儿童</a></li>
+            <li><a href="https://www.mi.com/p/3483.html?client_id=180100041086&masid=17409.0243">路由器 手机配件</a></li>
+            <li><a href="https://www.mi.com/p/3496.html?client_id=180100041086&masid=17409.0241">移动电源 插线板</a></li>
+            <li><a href="https://www.mi.com/p/3480.html?client_id=180100041086&masid=17409.0244">耳机 音箱</a></li>
+            <li><a href="https://www.mi.com/p/3484.html?client_id=180100041086&masid=17409.0242">生活 米兔</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="hou">
-        <ul>
-          <li><a href="https://www.mi.com/seckill" target="blank"><img src="cheng.png"></a></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <div class="home">
+        <div class="rukou">
+        <div class="zuo">
+          <ul>
+            <li><a href="" class="phone">选购手机</a></li>
+            <li><a href="">企业团购</a></li>
+            <li><a href="">F码通道</a></li>
+            <li><a href="">米粉卡</a></li>
+            <li><a href="">以旧换新</a></li>
+            <li><a href="">话费充值</a></li>
+          </ul>
+        </div>
+        <div class="you">
+          <ul class="rukou-list">
+            <li class="rukou-item"><a href="https://item.mi.com/product/10000083.html"><img src="xmad_15248252106128_BeQXt.jpg" alt=""></a></li>
+            <li class="rukou-item"><a href="https://item.mi.com/product/10000064.html"><img src="xmad_15266345206274_OkGLS.jpg" alt=""></a></li>
+            <li class="rukou-item"><a href="https://www.mi.com/roomrobot"><img src="517bd60e-9acc-42ca-ae51-df9cd7a5df2d.jfif" alt=""></a></li>
+          </ul>
+        </div>
+        </div>
+      <h2 class="title">小米闪购</h2>
+      <div class="shangou ">
+        <div class="daojishi">
+          <p>10:00 场</p>
+          <br><br><br><br><br><br><br>
+          <p>距离结束还有</p>      
+        </div>
+        <input type="radio" id="r1" name="shangou" checked="ture">
+        <input type="radio" id="r2" name="shangou">
+        <div class="shangpin">      
+          <div class="qian">
+            <ul>
+              <li><a href="https://www.mi.com/seckill" target="blank"><img src="shoubiao.png"></a></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="hou">
+            <ul>
+              <li><a href="https://www.mi.com/seckill" target="blank"><img src="cheng.png"></a></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
       </div>
+      <a class="guanggao-zhong" href="https://item.mi.com/product/10000089.html"><img src="https://i1.mifile.cn/a4/xmad_15236124748626_jUQzY.jpg"></a>
+  </div>
+  <div class="box-shenti">
+    <div class="shenti-bao">
+      <h2 class="title">手机</h2>
+      <div class="chakan"><a href="https://www.mi.com/p/1915.html">查看全部</a></div>
+      <div class="shouji">
+        <div class="changtiao"><a href="https://www.mi.com/mi8i/"><img src="https://i1.mifile.cn/a4/xmad_15277561628002_zOnrX.jpg" alt=""></a></div>
+        <div class="shouji-neirong">
+          <ul>
+            <li>
+              <div>
+                <a href="https://item.mi.com/product/10000091.html"><img src="shouji.jpg" alt=""></a>
+              </div>
+                <a href="https://item.mi.com/product/10000091.html">小米6X 4GB+32GB</a>
+                <p>全索尼相机，骁龙660 AIE处理器</p>
+                <p>1499元</p>
+            </li>
+            <li>
+              <div>
+                <a href="https://item.mi.com/product/10000091.html"><img src="shouji.jpg" alt=""></a>
+              </div>
+                <a href="https://item.mi.com/product/10000091.html">小米6X 4GB+32GB</a>
+                <p>全索尼相机，骁龙660 AIE处理器</p>
+                <p>1499元</p></li>
+            <li>
+              <div>
+                <a href="https://item.mi.com/product/10000091.html"><img src="shouji.jpg" alt=""></a>
+              </div>
+                <a href="https://item.mi.com/product/10000091.html">小米6X 4GB+32GB</a>
+                <p>全索尼相机，骁龙660 AIE处理器</p>
+                <p>1499元</p></li>
+            <li>
+              <div>
+                <a href="https://item.mi.com/product/10000091.html"><img src="shouji.jpg" alt=""></a>
+              </div>
+                <a href="https://item.mi.com/product/10000091.html">小米6X 4GB+32GB</a>
+                <p>全索尼相机，骁龙660 AIE处理器</p>
+                <p>1499元</p></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <h2 class="title">家电</h2>
+      <div class="product-list">
+        <div class="jiadian-left">
+          <ul class="jiadian-list">
+            <li><img src="shexiangji.jpg" alt=""></li>
+            <li><img src="shaodi.jpg" alt=""></li>
+          </ul>
+        </div>
+        <div class="jiadian-right">  
+              <span class="wenzi">热门</span>
+              <span class="wenzi">电视影音</span>
+              <span class="wenzi">电脑</span>
+              <span class="wenzi">家居</span>
+              <div class="jiadian-right-div  remen">
+                <ul class="jiadian-right-list">
+                  <li dazhe="减300元">
+                    <div><a href="https://item.mi.com/1181600012.html" target="blank"><img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1181600012.html" target="blank">小米电视4A 43英寸青春版</a></h3>
+                    <p>全面高清屏/人工智能语音</p>
+                    <p><span>1399元</span><span>1699元</span></p>
+                    <div class="review-wrapper">
+                    <a href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="减300元">
+                    <div><a target="blank" href="https://item.mi.com/1181100012.html" target="blank"><img src="https://i1.mifile.cn/a1/pms_1522318330.86967810!220x220.jpg" alt=""></a></div>
+                    <h3><a target="blank" href="https://item.mi.com/1181100012.html" target="blank">小米电视4C 50英寸</a></h3>
+                    <p>4K HDR/人工智能语音</p>
+                    <p><span>1899元</span><span>2199元</span></p>
+                    <div class="review-wrapper">
+                    <a target="blank" href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a target="blank" href="https://item.mi.com/1172300022.html"><img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg" alt=""></a></div>
+                    <h3><a target="blank" href="https://item.mi.com/1172300022.html" target="blank">13.3"小米笔记本Air i5 8G 256G dasdwdas</a></h3>
+                    <p>全金属超薄机身搭配独显</p>
+                    <p><span>5199</span><span></span></p>
+                    <div class="review-wrapper">
+                    <a target="blank" href="https://item.mi.com/1172300022.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="减500元"></li>
+                  <li>
+                    <div><a href="https://item.mi.com/1181600012.html"><img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1181600012.html" target="blank">小米电视4A 43英寸青春版</a></h3>
+                    <p>全面高清屏/人工智能语音</p>
+                    <p><span>1399元</span><span>1699元</span></p>
+                    <div class="review-wrapper">
+                    <a href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="https://item.mi.com/1181600012.html"><img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1181600012.html" target="blank">小米电视4A 43英寸青春版</a></h3>
+                    <p>全面高清屏/人工智能语音</p>
+                    <p><span>1399元</span><span>1699元</span></p>
+                    <div class="review-wrapper">
+                    <a href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="享8折"></li>
+                  <li>
+                    <div><a href="https://item.mi.com/1160800067.html"><img src="https://i1.mifile.cn/a1/pms_1521634907.16181074!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1160800067.html">小米净水器 ssssss</a></h3>
+                    <p>1799元</p>
+                  </li>
+                  <li>
+                    <div><a href="https://www.mi.com/p/1995.html"><img src="get-more.png" alt=""></a></div>
+                    <a href="https://www.mi.com/p/1995.html">
+                    浏览更多
+                    <small>热门</small>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="jiadian-right-div dsyy">
+                <ul class="jiadian-right-list">
+                  <li dazhe="减300元">
+                    <div><a href="https://item.mi.com/1173300021.html" target="blank"><img src="https://i1.mifile.cn/a1/pms_1503909300.25797209!220x220.png" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1173300021.html" target="blank">小米电视4A 55英寸</a></h3>
+                    <p>4K高清HDR/真四核64位高性能处理器</p>
+                    <p><span>2399元</span><span>2799元</span></p>
+                    <div class="review-wrapper">
+                    <a href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="减300元">
+                    <div><a target="blank" href="https://item.mi.com/1181100012.html" target="blank"><img src="https://i1.mifile.cn/a1/pms_1522318330.86967810!220x220.jpg" alt=""></a></div>
+                    <h3><a target="blank" href="https://item.mi.com/1181100012.html" target="blank">小米电视4C 50英寸</a></h3>
+                    <p>4K HDR/人工智能语音</p>
+                    <p><span>1899元</span><span>2199元</span></p>
+                    <div class="review-wrapper">
+                    <a target="blank" href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a target="blank" href="https://item.mi.com/1172700040.html"><img src="https://i1.mifile.cn/a1/pms_1500287084.72131750!220x220.jpg" alt=""></a></div>
+                    <h3><a target="blank" href="https://item.mi.com/1172700040.html" target="blank">小米电视4A 32英寸</a></h3>
+                    <p>64位四核处理器/1GB+4GB大内存</p>
+                    <p><span>799元</span><span>999元</span></p>
+                    <div class="review-wrapper">
+                    <a target="blank" href="https://item.mi.com/1172700040.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="减500元"></li>
+                  <li>
+                    <div><a href="http://www.mi.com/mitv4A/65/"><img src="https://i1.mifile.cn/a1/pms_1490077569.08131612!220x220.png" alt=""></a></div>
+                    <h3><a href="http://www.mi.com/mitv4A/65/" target="blank">小米电视4A 65英寸</a></h3>
+                    <p>4K超高清屏/真四核64位高性能处理器</p>
+                    <p><span>3999元</span><span>4499元</span></p>
+                    <div class="review-wrapper">
+                    <a href="http://www.mi.com/mitv4A/65/">卖家评价</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div><a href="https://item.mi.com/1181600012.html"><img src="https://i1.mifile.cn/a1/pms_1524883847.49276938!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1181600012.html" target="blank">小米电视4A 43英寸青春版</a></h3>
+                    <p>全面高清屏/人工智能语音</p>
+                    <p><span>1399元</span><span>1699元</span></p>
+                    <div class="review-wrapper">
+                    <a href="https://item.mi.com/1181600012.html">卖家评价</a>
+                    </div>
+                  </li>
+                  <li dazhe="享8折"></li>
+                  <li>
+                    <div><a href="https://item.mi.com/1160800067.html"><img src="https://i1.mifile.cn/a1/pms_1521634907.16181074!220x220.jpg" alt=""></a></div>
+                    <h3><a href="https://item.mi.com/1160800067.html">小米净水器 ssssss</a></h3>
+                    <p>1799元</p>
+                  </li>
+                  <li>
+                    <div><a href="https://www.mi.com/p/1995.html"><img src="get-more.png" alt=""></a></div>
+                    <a href="https://www.mi.com/p/1995.html">
+                    浏览更多
+                    <small>热门</small>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="jiadian-right-div diannao">
+                <ul class="jiadian-right-list">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="jiadian-right-div jiaju">
+                <ul class="jiadian-right-list">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+        </div>
+      </div>
+      <a class="guanggao-zhong" href="https://item.mi.com/1164700014.html?cfrom=search"><img src="https://i1.mifile.cn/a4/xmad_15282822747649_UXhkN.jpg"></a>
     </div>
   </div>
-  <a href="https://item.mi.com/product/10000089.html"><img src="https://i1.mifile.cn/a4/xmad_15236124748626_jUQzY.jpg"></a>
-  <div class="box-hd">
-    <h2 class="title">手机</h2>
-    <div class="chakan"><a href="https://www.mi.com/p/1915.html">查看全部</a></div>
-  </div>
+</div>  
 </body>
+
 </html>
