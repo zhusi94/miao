@@ -1,0 +1,86 @@
+<script type="">
+  var a = +prompt("请输入一元二次方程系数a",'')
+  while(isNaN(a)){
+    alert('请输入正确的不为零数a')
+    var a = +prompt("请输入一元二次方程系数a",'')
+    while(a == 0){
+      alert('请输入不为零的数a')
+      var a = +prompt("请输入一元二次方程系数a",'')
+    }
+  }
+  var b = +prompt("请输入一元二次方程系数b",'')
+  while(isNaN(b)){
+    alert('请输入正确的不为零数b')
+    var b = +prompt("请输入一元二次方程系数b",'')
+    while(b == 0){
+      alert('请输入不为零的数b')
+      var b = +prompt("请输入一元二次方程系数b",'')
+    }
+  }
+  var c = +prompt("请输入一元二次方程系数c",'')
+  while(isNaN(c)){
+    alert('请输入正确的不为零数c')
+    var c = +prompt("请输入一元二次方程系数c",'')
+    while(c == 0){
+      alert('请输入不为零的数c')
+      var c = +prompt("请输入一元二次方程系数c",'')
+    }
+  }
+
+
+  var delta = b**2 - 4 * a * c
+  var s_delta = Math.sqrt(delta)
+
+  if(delta > 0){
+    var x1= ((-b) + s_delta)/(2 * a)
+    var x2= ((-b) - s_delta)/(2 * a)
+    console.log(x1)
+    console.log(x2)
+  }else if(delta == 0){
+    var x= (-b) / (2 * a)
+    console.log(x)
+  }else if(delta < 0){
+    var x_delta = a * c * 4 - b**2
+    var x_s_delta = Math.sqrt(x_delta)
+    var d = Math.sqrt(s_delta)
+    var x1= (-b)/(2 * a)+"+"+((x_s_delta )/(2 * a)) +"i"
+    var x2= (-b)/(2 * a)+"-"+((x_s_delta )/(2 * a)) +"i"
+    console.log(x1)
+    console.log(x2)
+  }
+
+
+
+
+</script>
+
+<script type="x">
+  var a = prompt("请输入形如ax + by = c的二元一次方程的参数a","")
+  var b = prompt("请输入形如ax + by = c的二元一次方程的参数b","")
+  var c = prompt("请输入形如ax + by = c的二元一次方程的参数c","")
+  var d = prompt("请输入形如dx + ey = f的二元一次方程的参数d","")
+  var e = prompt("请输入形如dx + ey = f的二元一次方程的参数e","")
+  var f = prompt("请输入形如dx + ey = f的二元一次方程的参数f","")
+
+
+
+
+if(a / d != b / e){
+  var y = (a * f - c * d)/(a * e - b * d)
+  var x = (c - b * y)/a
+  console.log(x)
+  console.log(y)
+}else if(a / d == b / e && a / d == c / f){
+  alert("该方程组有无穷多解")
+}else if(a / d == b / e && a /d != c / f){
+  alert("该方程组无解")
+}
+
+
+
+
+
+
+
+
+</script>
