@@ -392,3 +392,225 @@
   console.log(sum)
   console.log(half_h)
 </script>
+
+<script id="ch0103/01">
+  var a = Number(prompt('输入A',''))
+  var b = Number(prompt('输入B',''))
+  var result = a + b
+
+  console.log(result)
+</script>
+
+<script id="ch0103/02">
+
+  var a = Number(prompt('输入A',''))
+  var b = Number(prompt('输入B',''))
+  var c = Number(prompt('输入C',''))
+  var result = (a + b) * c
+
+  console.log(result)
+</script>
+
+<script id="ch0103/03">
+
+  var a = Number(prompt('输入A',''))
+  var b = Number(prompt('输入B',''))
+  var c = Number(prompt('输入C',''))
+  var result = (a + b) / c
+
+  console.log(parseInt(result))
+</script>
+
+
+<script id="ch0103/04">
+
+  var a = Number(prompt('输入A',''))
+  var b = Number(prompt('输入B',''))
+
+  var result = a / b
+  var yu = a % b
+ 
+  console.log(parseInt(result))
+  console.log(yu)
+</script>
+
+
+<script id="ch0103/05">
+
+  var a = Number(prompt('输入A',''))
+  var b = Number(prompt('输入B',''))
+  var result = a / b
+  result = result.toFixed(9)
+  result = result - parseInt(result)
+  console.log(result)
+</script>
+
+
+<script id="ch0103/06">
+
+  var a = Number(prompt('输入确诊数',''))
+  var b = Number(prompt('输入死亡人数',''))
+  var result = b / a
+  result = result.toFixed(3)
+
+  console.log(result + '%')
+</script>
+
+
+<script id="ch0103/07">
+
+  var a = Number(prompt('输入a',''))
+  var b = Number(prompt('输入b',''))
+  var c = Number(prompt('输入c',''))
+  var d = Number(prompt('输入d',''))
+  var x = Number(prompt('输入x',''))
+  var result = a * (x**3) + b * (x**2) + c * x + d
+  result = result.toFixed(7)
+
+  console.log(result)
+</script>
+
+
+<script id="ch0103/08">
+
+  var f = Number(prompt('输入f',''))
+  
+  var result = 5 * (f - 32) / 9
+  result = result.toFixed(5)
+
+  console.log(result)
+</script>
+
+<script id="ch0103/09">
+  var r = Number(prompt('输入半径r',''))
+  var diameter = 2 * r
+  diameter = diameter.toFixed(4)
+
+  var perimeter = 2 * Math.PI * r
+  perimeter = perimeter.toFixed(4)
+
+  var proportion = Math.PI * (r ** 2)
+  proportion = proportion.toFixed(4)
+
+  console.log(diameter)
+  console.log(perimeter)
+  console.log(proportion)
+</script>
+
+<script id="ch0103/10">
+  var r1 = Number(prompt('输入电阻r1',''))
+  var r2 = Number(prompt('输入电阻r2',''))
+  var result = 1 / (1 / r1 + 1 / r2)
+  result = result.toFixed(4)
+
+  console.log(result)
+</script>
+
+
+<script id="ch0103/11">
+  var a = Number(prompt('输入a',''))
+  var b = Number(prompt('输入b',''))
+  var result = a - parseInt(a / b) * b
+  
+
+  console.log(result)
+</script>
+
+<script id="ch0103/12">
+  var r = Number(prompt('输入r',''))
+  var pi = 3.14
+  var result = (4 / 3) * pi * (r**3)
+
+  result = result.toFixed(2)
+  console.log(result)
+</script>
+
+
+<script id="ch0103/13">
+  var n = Number(prompt('输入三位数n',''))
+  
+  var a = n % 10                      //个位
+  var b = ((n % 100) - a) / 10        //十位
+  var c = parseInt(n / 100)           //百位
+
+  
+  console.log(a * 100 + b * 10 + c)
+</script>
+
+<script id="ch0103/14">
+  var h = Number(prompt('输入h',''))
+  var r = Number(prompt('输入r',''))
+  var pi = 3.14159
+  var result = 20000 / (h * pi * (r**2))
+
+  result = Math.ceil(result) 
+  console.log(result)
+</script>
+
+<script id="ch0103/15">
+  var n = Number(prompt('输入n',''))
+  var x = Number(prompt('输入x',''))
+  var y = Number(prompt('输入y',''))
+  
+  var result =n - Math.ceil(y / x)
+
+  
+  console.log(result)
+</script>
+
+<script id="ch0103/16">
+  var xa = Number(prompt('输入xa',''))
+  var ya = Number(prompt('输入ya',''))
+  var xb = Number(prompt('输入xb',''))
+  var yb = Number(prompt('输入yb',''))
+
+  var result = Math.sqrt((xa - xb) ** 2 + (ya - yb) ** 2)
+  result = result.toFixed(3)
+  console.log(result)
+</script>
+
+
+<script id="ch0103/17">
+  var x1 = Number(prompt('输入x1',''))
+  var y1 = Number(prompt('输入y1',''))
+  var x2 = Number(prompt('输入x2',''))
+  var y2 = Number(prompt('输入y2',''))
+  var x3 = Number(prompt('输入x3',''))
+  var y3 = Number(prompt('输入y3',''))
+
+  var a = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)   //第一条边长
+  var b = Math.sqrt((x2 - x3) ** 2 + (y2 - y3) ** 2)   //第二条边长
+  var c = Math.sqrt((x3 - x1) ** 2 + (y3 - y1) ** 2)   //第三条边长
+  var p = (a + b + c) / 2                              //公式中的p
+
+  var result = Math.sqrt(p * (p - a) * (p - b) * (p -c))
+  result = result.toFixed(2)
+  console.log(result)
+</script>
+
+<script id="ch0103/18">
+  var a1 = Number(prompt('输入a1',''))
+  var a2 = Number(prompt('输入a2',''))
+  var n = Number(prompt('输入n',''))
+  var d = a2 - a1        //公差
+ 
+  var result = a1 + (n - 1) * d
+
+  console.log(result)
+</script>
+
+
+<script id="ch0103/19">
+  var a = Number(prompt('输入a',''))
+  var b = Number(prompt('输入b',''))
+  var result = a * b
+  console.log(result)
+</script>
+
+
+<script id="ch0103/20">
+  var n = Number(prompt('输入n',''))
+  var result = 2 ** n
+  console.log(result)
+</script>
+
