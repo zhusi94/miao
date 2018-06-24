@@ -450,7 +450,7 @@
 
   var a = Number(prompt('输入确诊数',''))
   var b = Number(prompt('输入死亡人数',''))
-  var result = b / a
+  var result = b / a * 100
   result = result.toFixed(3)
 
   console.log(result + '%')
@@ -459,11 +459,11 @@
 
 <script id="ch0103/07">
 
+  var x = Number(prompt('输入x',''))
   var a = Number(prompt('输入a',''))
   var b = Number(prompt('输入b',''))
   var c = Number(prompt('输入c',''))
   var d = Number(prompt('输入d',''))
-  var x = Number(prompt('输入x',''))
   var result = a * (x**3) + b * (x**2) + c * x + d
   result = result.toFixed(7)
 
@@ -483,13 +483,16 @@
 
 <script id="ch0103/09">
   var r = Number(prompt('输入半径r',''))
-  var diameter = 2 * r
+  var diameter = 2 * r * 10000
+  diameter = Math.floor(diameter) / 10000
   diameter = diameter.toFixed(4)
 
-  var perimeter = 2 * Math.PI * r
+  var perimeter = 2 * Math.PI * r * 10000
+  perimeter = Math.floor(perimeter) / 10000
   perimeter = perimeter.toFixed(4)
 
-  var proportion = Math.PI * (r ** 2)
+  var proportion = Math.PI * (r ** 2) * 10000
+  proportion = Math.floor(proportion) / 10000
   proportion = proportion.toFixed(4)
 
   console.log(diameter)
@@ -501,17 +504,17 @@
   var r1 = Number(prompt('输入电阻r1',''))
   var r2 = Number(prompt('输入电阻r2',''))
   var result = 1 / (1 / r1 + 1 / r2)
-  result = result.toFixed(4)
+  result = result.toFixed(2)
 
   console.log(result)
 </script>
 
 
-<script id="ch0103/11">
+<script id="ch0103/11"  type="xx">
   var a = Number(prompt('输入a',''))
   var b = Number(prompt('输入b',''))
   var result = a - parseInt(a / b) * b
-  
+  result = result.toFixed(4)
 
   console.log(result)
 </script>
