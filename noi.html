@@ -834,10 +834,9 @@
 <script id="ch0104/17">
   var x = Number(prompt('请输入年份x',''))
 
-
-  if (x % 3200 ==0 || (x % 100 == 0 && x % 400 != 0)){
+  if (x % 3200 == 0 || (x % 100 == 0 && x % 400 != 0) || x % 4 != 0){
     console.log('N')
-  } else if (x % 4 == 0){
+  } else if (x % 4 == 0) {
     console.log('Y')
   }
 </script>
@@ -890,11 +889,10 @@
   if(delta > 0){
     var x1= ((-b) + s_delta)/(2 * a)
     var x2= ((-b) - s_delta)/(2 * a)
-    console.log('x1 = ' + x1.toFixed(5))
-    console.log('x2 = ' + x2.toFixed(5))
+    console.log('x1=' + x1.toFixed(5) + ';' + 'x2=' + x2.toFixed(5))
   }else if(delta == 0){
     var x= (-b) / (2 * a)
-    console.log('x1 = x2 =' + x.toFixed(5))
+    console.log('x1=x2=' + x.toFixed(5))
   }else if(delta < 0){
     var x_delta = a * c * 4 - b**2
     var x_s_delta = Math.sqrt(x_delta)
@@ -903,8 +901,7 @@
 
     var x1= shibu+"+"+xubu +"i"
     var x2= shibu+"-"+xubu +"i"
-    console.log('x1 = ' + x1)
-    console.log('x2 = ' + x2)
+    console.log('x1=' + x1 + ';'+ 'x2=' + x2)
   }
 </script>
 
