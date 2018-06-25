@@ -97,22 +97,27 @@
   var s = 250                   //色彩空间起点
   var t = 50
 
-  var r1 = 100
-  var g1 = 100
+  var r1 = 255
+  var g1 = 255
   var b1 = 0
 
   for (t = 50; t < 150; t++){
-    g1 = g1 - 1
+    g1 = g1 - 2
     b1 = 0
     debugger
     for (s = 250; s < 350; s++ ){
-      b1 = b1 + 1
-      //debugger
-      dot(s,t,'rgb(r1,g1,b1,)')
+      b1 = b1 + 2
+      vColor = 'rgb(255, ' + g1 + ',' + b1 + ')'
+      dot(s,t,vColor)
     }
-    debugger
+    
   }                    
-
+  // for (var i = 220; i < 260; i++) {
+  //   for (var j = 220; j < 260; j++) {
+  //     vColor = 'rgb(255, ' + 6 * (260 - i) + ',' + 6 * (j - 220) + ")"
+  //     dot(i, j, vColor)
+  //   }
+  // }
 
 
 </script>
