@@ -916,3 +916,178 @@
   
   console.log(result)
 </script>
+
+
+<script id="sort"> //三个数升序排列
+  var a = Number(prompt('第一个数'))
+  var b = Number(prompt('第二个数'))
+  var c = Number(prompt('第三个数'))
+  var d = 0
+  while (a > b){
+    d = b
+    b = a
+    a = d
+    while (b > c){
+      d = c
+      c = b
+      b = d
+    }
+  }
+  console.log(a + ' ' + b + ' ' + c)
+</script>
+
+
+<script id="narcissistic">   //判断水仙花数
+
+  var i = Number(prompt('输入一个数'))
+  var j = '' + i
+  var n = j.length
+  var s = 0
+  for (var k = 0;k < n;k++){
+    var s = s + (parseInt(i / 10**k) % 10)**n
+  }
+  if ( s == i ){
+    console.log('YES')
+  } else {
+    console.log('NO')
+  }
+
+</script>
+
+<script id="narcissistics">   //找除100到100000的水仙花数
+
+  for (var i = 100;i < 100000;i++){
+    var j = '' + i
+    var n = j.length
+    var s = 0
+    for (var k = 0;k < n;k++){
+      var s = s + (parseInt(i / 10**k) % 10)**n
+    }
+    if ( s == i ){
+      console.log(i)
+    }
+  }
+</script>
+
+
+<script id="palindrom">       //判断回文数
+  var i = Number(prompt('请输入一个非负整数'))
+  var j = '' + i
+  var n = j.length
+  var s = ''
+  
+    for (var k = 0;k < n;k++){
+      var s = s + (parseInt(i / 10**k) % 10)
+    }
+    if (s === j){
+      console.log('YES')
+    } else {
+      console.log('NO')
+    }
+</script>
+
+<script id="complete-number">      //判断完全数
+  var n = Number(prompt('请输入一个数'))
+  var yueshu = 0  
+
+  for (var j = 1; j < n; j++){
+    if (n % j == 0){
+      yueshu = yueshu + j           //约数之和
+    }
+  }
+
+  if (yueshu == n) {
+    console.log('YES')
+  } else {
+    console.log('NO')
+  }
+
+</script>
+
+
+<script id="complete-numbers">   //输出10000以内完全数
+  for (var i = 1; i <= 10000;i++){
+    var yueshu = 0                      //约数之和
+    for (var j = 1; j < i; j++){
+      if (i % j == 0){
+        yueshu = yueshu + j           //约数之和
+      }
+    }
+    if (yueshu == i) {
+      console.log(i)
+    }
+  }
+
+</script>
+
+
+<script id="prime">         //判断素数
+  
+  var n = Number(prompt('输入一个数n'))
+  if (n ==2){
+    console.log('YES')
+  }
+  for (var i = 2;i < n;i++){
+    if(n % i == 0){
+      console.log('NO')
+      break
+    } else if(i == n-1){
+      console.log('YES')
+    }
+  }
+</script>
+
+
+<script id="primes">          //100以内所有素数
+  
+  for (var n = 2; n <= 100;n++){        //100以内所有素数
+    if (n == 2){
+      console.log(n)
+    }
+    for (var i = 2;i < n;i++){
+      if(n % i == 0){
+        break
+      } else if(i == n-1){
+        console.log(n)
+      }
+    }   
+  }  
+</script>
+
+
+<script id="lcf&lcm">        //最大公约数和最小公倍数
+  
+  var x = Number(prompt('整数x'))
+  var y = Number(prompt('整数y'))
+  var multiple = x * y                    //公倍数
+  var divisor = 1                         //公约数
+
+  for (var i = x * y; i >= Math.max(x,y);i--){
+    if (i % x == 0 && i % y == 0){
+      multiple = i
+    }
+  }
+
+  for (var j = 2;j <= Math.min(x,y); j++){
+    if (x % j == 0 && y % j == 0){
+      divisor = j
+      break
+    }
+  }
+  console.log(multiple)
+  console.log(divisor)
+
+</script>
+
+
+<script id="7" >            //敲7
+  
+  for (var i = 1;i <= 100;i++){
+    if (i % 7 == 0){
+      console.log(i)
+    } else if (i % 10 == 7 || parseInt(i /10) == 7){
+      console.log(i)
+    }
+  }
+
+</script>
