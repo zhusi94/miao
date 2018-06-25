@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>画图</title>
+  <style>
+    canvas {
+      border: 2px solid #f0f;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="400" height="300"></canvas>
+</body>
+<script>
+  var cvs = document.querySelector('canvas')
+  var ctx = cvs.getContext('2d')
+
+  function dot(x, y, color = 'black') {
+    ctx.fillStyle = color
+    ctx.fillRect(x, y, 1, 1)
+  }
+</script>
+<script>
+  // YOUR CODE GOES HERE
+  var a = 10
+  var b = 10  //第一条实线起点(10,10)
+  for (a = 10; a < 390; a++){
+    dot(a,b,'black')
+  }
+
+  var c = 10
+  var d = 20   //第二条线（虚线）起点（10,20）
+  for (c = 10; c < 390; c = c + 3){
+    dot(c,d,'black')
+    c++
+    dot(c,d,'black')
+  }
+
+  var e = 10
+  var f = 30   //第三条线（虚线）起点（10,30）
+  for (e = 10; e < 390; e = e + 3){
+    dot(e,f,'black')
+    e++
+    dot(e,f,'black')
+    e++
+    dot(e,f,'black')
+  }
+
+  var g = 80
+  var h = 4   //45°斜线起点（80,5）  h先自加一个再画点
+  for (g = 80; g < 200; g++){
+    h++
+    dot(g,h,'black')
+  }
+
+  var j = 0
+  var k = 0   //对角线起点（0,0） 
+  for (var i = 0; i < 500; i++){   //对角线长度为500 横轴 竖轴同步增加相应的距离
+    dot(j,k,'black')
+    j = j + 4 / 5
+    k = k + 3 / 5
+  }
+
+
+  var m = 20
+  var n = 60   //实心矩形左上角（20,20） 
+  for (n = 60; n < 80; n++){   // 矩形宽20
+    for (m = 20; m < 50; m++){  //矩形长30
+      dot(m,n,'aqua')
+    }
+  }
+
+  var o1 = 200
+  var o2 = 200   //圆心（200,200）  
+  var o3 = 0
+  var o4 = 0
+  for (o3 = 0;o3 < 299; o3 = o3 + 0.5){
+    for (o4 = 0;o4 < 399; o4 = o4 + 0.5){
+      if(((o3 - o1) ** 2 + (o4 - o2) ** 2) < 50**2 + 100 && ((o3 - o1) ** 2 + (o4 - o2) ** 2) > 50**2 - 100){     //半径50
+        dot(o3,o4,'black')
+      }
+    }
+  }
+  
+
+
+  var o3 = 50                                 //斜线 45°
+  var o4 = 0
+  for (o3 =50; o3 > 0; o3 = o3 - 0.05/50){
+    dot(o3,o4,'black')
+    o4 = o4 + 0.05/50
+  }
+
+  var s = 250                   //色彩空间起点
+  var t = 50
+
+  var r1 = 100
+  var g1 = 100
+  var b1 = 0
+
+  for (t = 50; t < 150; t++){
+    g1 = g1 - 1
+    b1 = 0
+    debugger
+    for (s = 250; s < 350; s++ ){
+      b1 = b1 + 1
+      //debugger
+      dot(s,t,'rgb(r1,g1,b1,)')
+    }
+    debugger
+  }                    
+
+
+
+</script>
+</html>
