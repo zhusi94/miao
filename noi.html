@@ -954,9 +954,9 @@
 
 </script>
 
-<script id="narcissistics">   //找除100到100000的水仙花数
+<script id="narcissistics">   //找除100到10000的水仙花数
 
-  for (var i = 100;i < 1000;i++){
+  for (var i = 100;i < 10000;i++){
     var j = '' + i
     var n = j.length
     var s = 0
@@ -1090,4 +1090,39 @@
     }
   }
 
+</script>
+
+
+<script id="itob">
+  
+  var n = Number(prompt('一个数'))
+  var digit
+  var result = ''
+
+  do {
+    var digit = n % 10
+    result = String.fromCharcode(digit + 48) + result
+    n = (n - digit) / 10 
+  } while (n > 0)
+
+  console.log(result)
+</script>
+
+
+<script id="sqrt">
+  //牛顿法
+  // x1 = x0 - f(x0) / f'(x0)
+
+  var n = Number(prompt('非负数n'))
+
+  var x = n
+  var count = 0
+  while (count < 7){
+    count++
+    x = x - (x**2 - 2) / (2 * x)
+  }
+
+  console.log(x)  
+
+  
 </script>
