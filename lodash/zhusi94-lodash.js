@@ -28,10 +28,14 @@
     },
 
     difference: function(array, ...values) {
-      //Creates an array of array values not included in the other given arrays using SameValueZero for equality comparisons. 
-      //The order and references of result values are determined by the first array.
 
-
-
+      for (var i = 0; i < values.length; i++) {
+        for (var j = 0; j < values[i].length; j++) {
+          if (array.indexOf(values[i][j]) != -1) {
+            array.splice(array.indexOf(values[i][j]), 1)
+          }
+        }
+      }
+      return array
     }
   }
