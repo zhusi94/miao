@@ -28,14 +28,20 @@
     },
 
     difference: function(array, ...values) {
+      var result = []
+      for (var k = 0; k < array.length; k++) {
+        result[i] = array[i]
+      }
 
       for (var i = 0; i < values.length; i++) {
         for (var j = 0; j < values[i].length; j++) {
-          if (array.indexOf(values[i][j]) != -1) {
-            array.splice(array.indexOf(values[i][j]), 1)
+          if (result.indexOf(values[i][j]) != -1) {
+            result.splice(result.indexOf(values[i][j]), 1)
           }
         }
       }
-      return array
+      return result
     },
+
+
   }
