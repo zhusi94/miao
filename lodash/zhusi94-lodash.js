@@ -13,8 +13,7 @@
         i--
       }
       return result
-    }
-
+    },
 
     compact: function(array) {
       var result = []
