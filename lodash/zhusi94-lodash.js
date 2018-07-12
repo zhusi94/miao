@@ -30,7 +30,7 @@
     difference: function(array, ...values) {
       var result = []
       for (var k = 0; k < array.length; k++) {
-        result[i] = array[i]
+        result[k] = array[k]
       }
 
       for (var i = 0; i < values.length; i++) {
