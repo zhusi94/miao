@@ -4,7 +4,7 @@
       let result = []
       let a = []
       let i = 0
-      while (1) {
+      while (array.length > 0) {
         i = 0
         while (i < Math.min(size, array.length)) {
           a.push(array.shift())
