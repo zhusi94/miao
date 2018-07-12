@@ -19,11 +19,13 @@
     compact: function(array) {
       var result = []
       for (var i = 0; i < array.length; i++) {
-        if (array[i] == undefined || array[i] == 0 || array[i] == '' || array[i] != array[i])
+        if (array[i] == undefined || array[i] == 0 || array[i] == '' || array[i] != array[i]) {
           continue
-      } else {
-        result.push(array[i])
+        } else {
+          result.push(array[i])
+        }
       }
       return result
     }
+
   }
