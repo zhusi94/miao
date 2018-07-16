@@ -43,5 +43,9 @@
       return result
     },
 
-
+    forEach: function(collection, action) {
+      for (var key in collection) {
+        action(collection[key], key)
+      }
+    },
   }
