@@ -112,4 +112,24 @@
 
       return result
     },
+
+    flattenDeep: function(array) {
+      var result = []
+
+    },
+    fromPairs: function(array) {
+      var result = {}
+
+      array.forEach(function(value) {
+        result[value[0]] = value[1]
+      })
+      return result
+    },
+    toPairs: function(object) {
+      var result = []
+      for (var key in object) {
+        result.push([key, object[key]])
+      }
+      return result
+    },
   }
