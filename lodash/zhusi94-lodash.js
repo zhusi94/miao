@@ -166,7 +166,7 @@
       var result = []
       for (var i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
-          var tmp = flattenDeepa(array[i])
+          var tmp = zhusi94.flattenDeepa(array[i])
           result = [...result, ...tmp]
         } else {
           result.push(array[i])
@@ -174,14 +174,14 @@
       }
       return result
     },
-    flattenDepth: function flattenDepth(array, depth = 1) {
+    flattenDepth: function(array, depth = 1) {
       if (depth === 0) {
         return array.slice() //[...array]
       }
       var result = []
       for (var i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
-          var tmp = flattenDepth(array[i], depth - 1)
+          var tmp = zhusi94.flattenDepth(array[i], depth - 1)
           result = [...result, ...tmp]
         } else {
           result.push(array[i])
