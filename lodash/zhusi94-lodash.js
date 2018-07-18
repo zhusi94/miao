@@ -56,7 +56,7 @@
 
     property: function(propName) {
       return function(obj) {
-        result obj[propName]
+        return obj[propName]
       }
     },
 
@@ -69,6 +69,16 @@
     },
     sum: function(ary) {
       return sumBy(ary, identity)
+    },
+    matches: function(src) {
+      return function(obj) {
+        for (var key in src) {
+          if (src[key] != obj[key]) {
+            return false
+          }
+        }
+        return true
+      }
     },
 
     differenceBy: function(array1, ...values) {
