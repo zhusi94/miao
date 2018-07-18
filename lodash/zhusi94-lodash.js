@@ -62,6 +62,12 @@
 
     sumBy: function(ary, iteratee) {
       var result = 0
+      if (typeof iteratee == 'string') {
+        var s = iteratee
+        iteratee = function(obj) {
+          return obj[s]
+        }
+      }
       for (var i = 0; i < ary.length; i++) {
         result += iteratee(ary[i])
       }
