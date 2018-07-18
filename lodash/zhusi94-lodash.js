@@ -51,17 +51,41 @@
     },
 
     identity: function(value) {
-      return arguments[0]
+      return value
     },
 
-    differenceBy: function(array1, Array, action) {
-      var f = action
+    property: function(propName) {
+      return function(obj) {
+        result obj[propName]
+      }
+    },
+
+    sumBy: function(ary, iteratee) {
+      var result = 0
+      for (var i = 0; i < ary.length; i++) {
+        result += iteratee(ary[i])
+      }
+      return result
+    },
+    sum: function(ary) {
+      return sumBy(ary, identity)
+    },
+
+    differenceBy: function(array1, ...values) {
+      var f = arguments[arguments.length - 1]
+      var result = []
+
       if (typeof(f) == "string") {
         f = function(obj) {
-          return obj[action]
+          return obj[arguments[arguments.length - 1]]
         }
       }
-      var dif = Array.map(x => f(x))
+
+      var dif = values.forEach(function(value) {
+        value.forEach(function(item) {
+          result.push(f(item))
+        })
+      })
 
       return array1.filter(item => dif.indexOf(f(item)) == -1)
     },
@@ -131,5 +155,25 @@
         result.push([key, object[key]])
       }
       return result
+    },
+
+    head: function(array) {
+      return array[0]
+    },
+
+    indexOf: function(array, value, fromIndex = 0) {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (array[i] == value) {
+          return i
+        }
+      }
+    },
+
+    initial: function(array) {
+      return array.slice(0, array.length - 1)
+    },
+
+    intersection: function(...arrays) {
+
     },
   }
