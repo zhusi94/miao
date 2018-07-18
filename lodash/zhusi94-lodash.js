@@ -166,7 +166,7 @@
       var result = []
       for (var i = 0; i < array.length; i++) {
         if (Array.isArray(array[i])) {
-          var tmp = zhusi94.flattenDeepa(array[i])
+          var tmp = zhusi94.flattenDeep(array[i])
           result = [...result, ...tmp]
         } else {
           result.push(array[i])
