@@ -48,4 +48,30 @@
         action(collection[key], key)
       }
     },
+
+    identity: function(value) {
+      return arguments[0]
+    },
+
+    differenceBy: function(array1, array2, action) {
+      var result = []
+      for (var i = 0; i < array1.length; i++) {
+        for (var j = 0; j < arry2.length; j++) {
+          if (action(array2[j]) == action(array1[i])) {
+            break
+          }
+          if (j == array2.length - 1) {
+            result.push(array1[i])
+          }
+        }
+      }
+      return result
+    },
+
+    negate: function(f) {
+      return function(...args) {
+        return !f(...args)
+      }
+    },
+
   }
