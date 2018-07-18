@@ -132,24 +132,62 @@
     },
 
     flatten: function(array) {
-      var result = []
+      //一：
+      // var result = []
 
-      for (var i = 0; i < array.length; i++) {
-        if (typeof array[i] != "object") {
-          result.push(array[i])
-        } else {
-          for (var j = 0; j < array[i].length; j++) {
-            result.push(array[i][j])
-          }
-        }
-      }
+      // for (var i = 0; i < array.length; i++) {
+      //   if (!Array.isArray(array[i])) {
+      //     result.push(array[i])
+      //   } else {
+      //     for (var j = 0; j < array[i].length; j++) {
+      //       result.push(array[i][j])
+      //     }
+      //   }
+      // }
 
-      return result
+      // return result
+
+      //二：
+      // return array.reduce((result, item) => {
+      //   if (!Array.isArray(item)) {
+      //     result.push(item)
+      //   } else {
+      //     //result.splice(result.length,0,...item)
+      //     result = [...result, ...item]
+      //   }
+      // }, [])
+
+      //三：
+      return [].concat(...array)
+      // return flattenDepth(array,1)
     },
 
     flattenDeep: function(array) {
       var result = []
-
+      for (var i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+          var tmp = flattenDeepa(array[i])
+          result = [...result, ...tmp]
+        } else {
+          result.push(array[i])
+        }
+      }
+      return result
+    },
+    flattenDepth: function(flattenDepth)(array, depth = 1) {
+      if (depth === 0) {
+        return array.slice() //[...array]
+      }
+      var result = []
+      for (var i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+          var tmp = flattenDepth(array[i], depth - 1)
+          result = [...result, ...tmp]
+        } else {
+          result.push(array[i])
+        }
+      }
+      return result
     },
     fromPairs: function(array) {
       var result = {}
