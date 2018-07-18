@@ -54,19 +54,16 @@
       return arguments[0]
     },
 
-    differenceBy: function(array1, ...Array, action) {
-      var result = []
-      for (var i = 0; i < array1.length; i++) {
-        for (var j = 0; j < Array[i].length; j++) {
-          if (action(Array[i][j]) == action(array1[i])) {
-            break
-          }
-          if (j == Array[i].length - 1) {
-            result.push(array1[i])
-          }
+    differenceBy: function(array1, Array, action) {
+      var f = action
+      if (typeof(f) == "string") {
+        f = function(obj) {
+          return obj[action]
         }
       }
-      return result
+      var dif = Array.map(x => f(x))
+
+      return array1.filter(item => dif.indexOf(f(item)) == -1)
     },
 
     negate: function(f) {
