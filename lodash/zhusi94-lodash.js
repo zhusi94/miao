@@ -71,5 +71,45 @@
         return !f(...args)
       }
     },
+    differenceWith: function(array1, values, comparator) {
 
+    },
+
+    drop: function(array, n = 1) {
+      return array.slice(n, array.length)
+    },
+
+    dropRight: function(array, n = 1) {
+      if (n > array.length) {
+        n = array.length
+      }
+      return array.slice(0, array.length - n)
+    },
+
+    dropRightWhile: function(array, predicate = zhusi94.identity) {
+
+    },
+
+    fill: function(array, value, start = 0, end = array.length) {
+      for (var i = start; i < end; i++) {
+        array[i] = value
+      }
+      return array
+    },
+
+    flatten: function(array) {
+      var result = []
+
+      for (var i = 0; i < array.length; i++) {
+        if (typeof array[i] != "object") {
+          result.push(array[i])
+        } else {
+          for (var j = 0; j < array[i].length; j++) {
+            result.push(array[i][j])
+          }
+        }
+      }
+
+      return result
+    },
   }
