@@ -174,7 +174,7 @@
       }
       return result
     },
-    flattenDepth: function(flattenDepth)(array, depth = 1) {
+    flattenDepth: function(array, depth = 1) {
       if (depth === 0) {
         return array.slice() //[...array]
       }
