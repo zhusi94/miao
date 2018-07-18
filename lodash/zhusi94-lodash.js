@@ -229,4 +229,46 @@
     intersection: function(...arrays) {
 
     },
+
+    join: function(array, separator = ',') {
+      return array.reduce((result, item) =>
+        '' + result + separator + item
+      )
+    },
+
+    last: function(array) {
+      return array[array.length - 1]
+    },
+    lastIndexOf: function(array, value, fromIndex = array.length - 1) {
+      for (var i = fromIndex; i >= 0; i--) {
+        if (array[i] == value) {
+          return i
+        }
+      }
+      return -1
+    },
+    nth: function(array, [n = 0]) {
+      if (n >= 0) {
+        return array[n]
+      } else {
+        return array[array.length - n]
+      }
+    },
+
+    pull: function(array, ...values) {
+      for (var i = 0; i < array.length; i++) {
+        if (values.indexOf(array[i]) !== -1) {
+          array.splice(i, 1)
+          i--
+        }
+      }
+    },
+    pullAll: function(array, values) {
+      for (var i = 0; i < array.length; i++) {
+        if (values.indexOf(array[i]) !== -1) {
+          array.splice(i, 1)
+          i--
+        }
+      }
+    },
   }
