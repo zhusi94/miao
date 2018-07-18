@@ -51,7 +51,7 @@
     },
 
     identity: function(value) {
-      return value
+      return arguments[0]
     },
 
     property: function(propName) {
@@ -68,7 +68,7 @@
       return result
     },
     sum: function(ary) {
-      return sumBy(ary, identity)
+      return zhusi94.sumBy(ary, zhusi94.identity)
     },
     matches: function(src) {
       return function(obj) {
@@ -83,19 +83,18 @@
 
     differenceBy: function(array1, ...values) {
       var f = arguments[arguments.length - 1]
-      var result = []
-
+      var h = f
       if (typeof(f) == "string") {
         f = function(obj) {
-          return obj[arguments[arguments.length - 1]]
+          return obj[h]
         }
       }
+      var dif = []
 
-      var dif = values.forEach(function(value) {
-        value.forEach(function(item) {
-          result.push(f(item))
-        })
-      })
+      for (var i = 1; i < arguments.length - 1; i++) {
+        var tmp = arguments[i].map(x => f(x))
+        dif = [...dif, ...tmp]
+      }
 
       return array1.filter(item => dif.indexOf(f(item)) == -1)
     },
