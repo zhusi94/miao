@@ -227,7 +227,12 @@
     },
 
     intersection: function(...arrays) {
-
+      if (arguments.length == 2) {
+        return arguments[0].filter(item => arguments[1].indexOf(item) != -1)
+      } else {
+        var ary = [...arrays].slice(1, arguments.length)
+        return arguments[0].filter(item => zhusi94.intersection(...ary).indexOf(item) != -1)
+      }
     },
 
     join: function(array, separator = ',') {
@@ -251,7 +256,7 @@
       if (n >= 0) {
         return array[n]
       } else {
-        return array[array.length - n]
+        return array[array.length + n]
       }
     },
 
@@ -272,5 +277,136 @@
         }
       }
       return array
+    },
+    reverse: function(ary) {
+      var l = Math.floor(aty.length / 2)
+      var a
+      var len = ary.length
+      for (var i = 0; i <= l; i++) {
+        a = ary[i]
+        ary[i] = ary[len - 1 - i]
+        ary[len - 1 - i] = a
+      }
+      return ary
+    },
+
+    sortedIndex: function(array, value) {
+      return array.reduce(function(result, item, index, ary) {
+        if (item > value) {
+          return index
+        }
+        if (index == array.length - 1) {
+          return array.length
+        }
+      })
+    },
+
+    sortedIndexOf: function(array, value) { //要用二分查找
+      var low = 0
+      var high = array.length - 1
+      var mid = Math.floor((low + high) / 2)
+
+      while (high - low > 1) {
+        mid = Math.floor((low + high) / 2)
+        if (array[mid] < value) {
+          low = mid
+        } else {
+          high = mid
+        }
+      }
+      if (array[mid] < value) {
+        mid++
+      }
+      if (array[mid] == value) {
+        return mid
+      } else {
+        return -1
+      }
+    },
+
+    sortedLastIndex: function(array, value) {
+      var low = 0
+      var high = array.length - 1
+      var mid = Math.floor((low + high) / 2)
+
+      while (high - low > 1) {
+        mid = Math.floor((low + high) / 2)
+        if (array[mid] < value) {
+          low = mid
+        } else {
+          high = mid
+        }
+      }
+      if (array[mid] < value) {
+        mid++
+      }
+      if (array[mid] == value) {
+        return array.length - mid
+      } else {
+        return -1
+      }
+    },
+    sortedUniq: function(array) { //已经排好序的单个数组去重
+      for (var i = 0; i < array.length; i++) {
+        if (array[i] == array[i + 1]) {
+          array.splice(i + 1, 1)
+          i--
+        }
+      }
+      return array
+    },
+    sortedUniqBy(array, iteratee) {
+      if (iteratee != undefined) {
+        for (var i = 0; i < array.length; i++) {
+          if (iteratee(array[i]) == iteratee(array[i + 1])) {
+            array.splice(i + 1, 1)
+            i--
+          }
+        }
+        return array
+      } else {
+        return zhusi94.sortedUniq(array)
+      }
+    },
+    tail: function(array) {
+      return array.slice(1, array.length)
+    },
+    take: function(array, n = 1) {
+      return array.slice(0, n)
+    },
+    takeRight: function(array, n = 1) {
+      return array.slice(array.length - n > 0 ? array.length - n : 0, array.length)
+    },
+    union: function(...arrays) {
+      var a = [].concat(...arrays)
+      return a.reduce(function(result, item) {
+        if (result.indexOf(item) == -1) {
+          result.push(item)
+        }
+        return result
+      }, [])
+    },
+    uniq: function(array) {
+      return array.reduce(function(result, item) {
+        if (result.indexOf(item) == -1) {
+          result.push(item)
+        }
+        return result
+      }, [])
+    },
+    zip: function(...arrays) {
+      var result = []
+      var a = [...arrays]
+      var g = []
+      var j = 0
+      while (j < a[0].length) {
+        g = []
+        for (var i = 0; i < a.length; i++) {
+          g.push(a[i][j])
+        }
+        result.push(g)
+        j++
+      }
+      return result
     },
   }
