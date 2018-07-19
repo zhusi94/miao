@@ -278,8 +278,9 @@
       }
       return array
     },
+
     reverse: function(ary) {
-      var l = Math.floor(aty.length / 2)
+      var l = Math.floor(ary.length / 2)
       var a
       var len = ary.length
       for (var i = 0; i <= l; i++) {
@@ -290,15 +291,23 @@
       return ary
     },
 
-    sortedIndex: function(array, value) {
-      return array.reduce(function(result, item, index, ary) {
-        if (item > value) {
-          return index
+    sortedIndex: function(array, value) { // 二分查找适合的插入位置
+      var low = 0
+      var high = array.length - 1
+      var mid = Math.floor((low + high) / 2)
+
+      while (high - low > 1) {
+        mid = Math.floor((low + high) / 2)
+        if (array[mid] < value) {
+          low = mid
+        } else {
+          high = mid
         }
-        if (index == array.length - 1) {
-          return array.length
+        if (array[mid] < value) {
+          mid++
         }
-      })
+      }
+      return mid
     },
 
     sortedIndexOf: function(array, value) { //要用二分查找
