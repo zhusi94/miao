@@ -303,9 +303,9 @@
         } else {
           high = mid
         }
-        if (array[mid] < value) {
-          mid++
-        }
+      }
+      if (array[mid] < value) {
+        mid++
       }
       return mid
     },
