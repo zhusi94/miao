@@ -247,7 +247,7 @@
       }
       return -1
     },
-    nth: function(array, [n = 0]) {
+    nth: function(array, n = 0) {
       if (n >= 0) {
         return array[n]
       } else {
@@ -262,6 +262,7 @@
           i--
         }
       }
+      return array
     },
     pullAll: function(array, values) {
       for (var i = 0; i < array.length; i++) {
@@ -270,5 +271,6 @@
           i--
         }
       }
+      return array
     },
   }
