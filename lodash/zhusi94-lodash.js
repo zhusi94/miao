@@ -418,4 +418,97 @@
       }
       return result
     },
+    unzip: function(array) {
+      var result = new Array(array[0].length).fill(0).map(it => [])
+
+      for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array[0].length; j++) {
+          result[j].push(array[i][j])
+        }
+      }
+
+      return result
+    },
+
+    without: function(array, ...values) {
+      var result = []
+      array.forEach(function(item) {
+        if ([].concat(...values).indexOf(item) == -1) {
+          result.push(item)
+        }
+      })
+      return result
+    },
+    xor: function(...arrays) {
+      var arg = [].concat(...arrays)
+      var result = []
+
+      for (var i = 0; i < arg.length; i++) {
+        if (arg.indexOf(arg[i]) == arg.lastIndexOf(arg[i])) {
+          result.push(arg[i])
+        }
+      }
+      return result
+    },
+    zipObject: function(props = [], values = []) {
+      var result = {}
+      if (!props) {
+        return result
+      }
+      for (var i = 0; i < props.length; i++) {
+        result[props[i]] = values[i]
+      }
+      return result
+    },
+    includes: function(collection, value, fromIndex = 0) {
+      if (Array.isArray(collection)) {
+        for (var i = fromIndex; i < collection.length; i++) {
+          if (collection[i] == value) {
+            return true
+          }
+        }
+        return false
+      }
+
+      if (typeof collection == 'string') {
+        var c = collection.split("")
+        var v = value.split("")
+
+        for (var i = 0; i < c.length; i++) {
+          if (c[i] == v[0]) {
+            var j = i
+            var k = 0
+            while (c[j] == v[k] && k < v.length) {
+              j++
+              k++
+            }
+            if (k == v.length && c[j - 1] == v[k - 1]) {
+              return true
+            }
+          }
+        }
+        return false
+      }
+
+      if (typeof collection == 'object') {
+        for (var key in collection) {
+          if (collection[key] == value) {
+            return true
+          }
+        }
+        return false
+      }
+    },
+    size: function(collection) {
+      if (typeof collection == 'object' && !Array.isArray(collection)) {
+        var result = 0
+        for (var key in collection) {
+          result++
+        }
+        return result
+      } else {
+        return collection.length
+      }
+
+    },
   }
