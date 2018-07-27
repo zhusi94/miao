@@ -205,7 +205,9 @@
     toPairs: function(object) {
       var result = []
       for (var key in object) {
-        result.push([key, object[key]])
+        if (object.hasOwnProperty(key)) {
+          result.push([key, object[key]])
+        }
       }
       return result
     },
@@ -511,4 +513,181 @@
       }
 
     },
+
+
+    iteratee: function(func = zhusi94.identity) {
+      if (typeof func == 'function') {
+        return func
+      }
+      if (typeof func == 'string') {
+        return function(func) {
+          return func
+        }
+      }
+
+    },
+    isMatch: function(object, source) {
+      for (var key in object) {
+        if (!zhusi94.isEqual(boject[key], source[key])) {
+          return false
+        }
+      }
+      return true
+    },
+
+    isEqual: function(val, other) {
+      if (val === other) {
+        return true
+      }
+      if (val !== val && other !== other) {
+        return true
+      }
+      if (value == null || typeof(value) != 'object' || typeof(other) != 'object' || other == null) return false
+      let propA = 0
+      let propB = 0
+      for (let prop in value) {
+        propA++
+      }
+      for (let prop in other) {
+        propB++
+        if (!(prop in value) || !isEqual(value[prop], other[prop])) return false
+      }
+      return propA == propB
+    },
+    isNaN: function(val) {
+      if (val !== val) {
+        return true
+      } else {
+        return false
+      }
+    },
+    matches: function(source) {
+      return function(object) {
+        for (var key in source) {
+          if (!zhusi94.isEqual(source[key], object[key])) {
+            return false
+          }
+          return true
+        }
+      }
+    },
+    matchesProperty: function(pro, val) {
+      return function(ary) {
+        for (var i = 0; i < ary.length; i++) {
+          if (isEqual(ary[i][pro], val)) {
+            return ary[i]
+          }
+        }
+      }
+    },
+    isArray: function(ary) {
+      return Object.prototype.toString.call(ary) === '[object Array]'
+    },
+    isRegExp: function(value) {
+      return Object.prototype.toString.call(value) === '[object RegExp]'
+    },
+    iteratee: function(iter) {
+      // isObject
+      if (Object.prototype.toString.call(iter) === '[object Object]') {
+        return zhusi94.matches(iter)
+      }
+
+      // isArray
+      // TODO: 不应该比较大小
+      if (zhusi94.isArray(iter)) {
+        // !!! 只写了数组 length === 2 的情况
+        return obj => zhusi94.isEqual(obj[iter[0]], iter[1])
+      }
+
+      // isRegExp
+      // /(?<=\/).*?(?=\/)/
+      if (zhusi94.isRegExp(iter)) {
+        return str => iter.exec(str)
+      }
+
+      // isString
+      if (typeof iter === 'string') {
+        return sanvvv.property(iter)
+      }
+
+      // isFunction
+      if (typeof iter === 'function') {
+        return iter
+      }
+    },
+
+    every: function(collection, predicate = zhusi94.identity) {
+      var f = zhusi94.iteratee(predicate)
+
+      for (var item of collection) {
+        if (!f(item)) {
+          return false
+        }
+      }
+      return true
+    },
+    find: function(collection, predicate = zhusi94.identity, fromIndex = 0) {
+      var f = zhusi94.iteratee(predicate)
+      for (var item of collection) {
+        if (f(item)) {
+          return item
+        }
+      }
+      return undefined
+    },
+    groupBy: function(collection, iteratee) {
+      var f = zhusi94.iteratee(iteratee)
+
+      return collection.reduce(function(result, item, index, ary) {
+        var val = f(item)
+        if (!result[val]) {
+          result[val] = [item]
+        } else {
+          result[val].push(item)
+        }
+        return result
+      }, {})
+    },
+    some: function(collection, predicate = zhusi94.identity) {
+      var f = zhusi94.iteratee(predicate)
+      // return !zhusi94.every(collection,negate(f))
+
+      for (var itrm of collection) {
+        if (f(item)) {
+          return true
+        }
+      }
+      return false
+    },
+
+    castArray: function(array) {
+      if (Array.isArray(array)) {
+        return array
+      } else {
+        return [array]
+      }
+    },
+    conformsTo: function(object, source) {
+      for (var key in source) {
+        return source[key](object[key])
+      }
+    },
+
+    eq: function(value, other) {
+      if (typeof value !== typeof other) {
+        return false
+      } else {
+        if (value !== value && other !== other) {
+          return true
+        }
+
+        if (zhusi94.isEqual(value, other)) {
+          return true
+        }
+        if (value === other) {
+          return true
+        }
+      }
+    },
+
   }
