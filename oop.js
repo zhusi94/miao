@@ -1,16 +1,53 @@
-function MySet(...ary) {
+function MySet(ary) {
   this.length = 0
-  if (!ary) {
-    return
-  }
-
   for (var i = 0; i < ary.length; i++) {
-    if (!(ary[i] in this)) {
-      this[i] = ary[i]
-      this.length++
+    if (ary[i] in this) {
+      continue
+    } else {
+      this[this.length++] = ary[i]
     }
   }
 }
+
+MySet.prototype = {
+  add: function(val) {
+    if (!(val in this)) {
+      this[this.length++] = val
+    }
+    return this
+  },
+  clear: function() {
+    for (var key in this) {
+      delete this[key]
+      this.length--
+    }
+  },
+  delete: function(val) {
+    for (var key in this) {
+      if (this[key] == val) {
+        delete this[key]
+        this.length--
+          return true
+      }
+    }
+    return false
+  },
+  has: function(val) {
+    for (var key in this) {
+      if (this[key] == val) {
+        return true
+      }
+    }
+    return false
+  },
+  forEach: function(f) {
+    for (var key in this) {
+      f(this[key], key, this)
+    }
+    return this
+  },
+}
+
 
 function MyMap(ary) {
   for (var i = 0; i < ary.length; i++) {
@@ -27,9 +64,19 @@ function MyArray(...values) {
 }
 
 MyArray.prototype = {
-  push: function(val) {
-    this[this.length] = val
-    this.length++
+
+  forEach: function(f) {
+    for (var i = 0; i < this.length; i++) {
+      f(this[i], i, this)
+    }
+    return this
+  },
+  push: function(...val) {
+    for (var i = 0; i < val.length; i++) {
+      this[this.length] = val[i]
+      this.length++
+    }
+    return this.length
   },
   pop: function() {
     var result = this[this.length - 1]
@@ -46,12 +93,15 @@ MyArray.prototype = {
     this.length--
       return result
   },
-  unshift: function(val) {
-    for (var i = this.length; i > 0; i--) {
-      this[i] = this[i - 1]
+  unshift: function(...val) {
+    for (var i = this.length + val.length - 1; i >= val.length; i--) {
+      this[i] = this[i - val.length]
     }
-    this[0] = val
-    this.length--
+    for (var i = 0; i < val.length; i++) {
+      this[i] = val[i]
+    }
+    this.length += val.length
+    return this.length
   },
 
   concat: function(...val) {
@@ -92,11 +142,7 @@ MyArray.prototype = {
     }
   },
 
-  forEach: function(f) {
-    for (var i = 0; i < this.length; i++) {
-      f(this[i])
-    }
-  },
+
 
   filter: function(text) {
     for (var i = 0; i < this.length; i++) {
@@ -106,7 +152,7 @@ MyArray.prototype = {
       }
     }
   },
-  splice: function(start, len = 1) {
+  splice: function(start, len) {
     for (var i = start; i < this.length; i++) {
       this[i] = this[i + len]
     }
@@ -115,5 +161,64 @@ MyArray.prototype = {
       delete this[j]
     }
     this.length -= len
+    if (this.length < 0) {
+      this.length = 0
+    }
+  },
+  reverse: function() {
+    for (var i = 0; i < this.length / 2; i++) {
+      var t = this[i]
+      this[i] = this[this.length - 1 - i]
+      this[this.length - 1 - i] = t
+    }
+  },
+  includes: function(val) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] == val) {
+        return true
+      }
+    }
+    return false
+  },
+
+  indexOf: function(val) {
+    for (var i = 0; i < this.length; i++) {
+      if (this[i] == val) {
+        return i
+      }
+    }
+    return -1
+  },
+
+  slice: function(start = 0, end = this.length - 1) {
+    if (start < 0) {
+      start = this.length + start
+    }
+    if (end < 0) {
+      end = this.length + end
+    }
+    var result = new MyArray()
+    if (start >= end) {
+      return result
+    }
+    for (var i = start; i < end; i++) {
+      result.push(this[i])
+    }
+    return result
+  },
+
+  isMyArray: function(ary) {
+    if (ary instanceof MyArray) {
+      return true
+    } else {
+      return false
+    }
+  },
+  reduce: function(f, initialValue) {
+    var prev = initialValue
+    for (var i = 0; i < this.length; i++) {
+      prev = f(prev, this[i], i, this)
+    }
+    return prev
   },
 }
