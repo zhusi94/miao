@@ -152,7 +152,10 @@ MyArray.prototype = {
       }
     }
   },
-  splice: function(start, len) {
+  splice: function(start, len = this.length, ...val) {
+    if (start < 0) {
+      start += this.length
+    }
     for (var i = start; i < this.length; i++) {
       this[i] = this[i + len]
     }
@@ -216,8 +219,15 @@ MyArray.prototype = {
   },
   reduce: function(f, initialValue) {
     var prev = initialValue
-    for (var i = 0; i < this.length; i++) {
-      prev = f(prev, this[i], i, this)
+    if (prev != undefined) {
+      for (var i = 0; i < this.length; i++) {
+        prev = f(prev, this[i], i, this)
+      }
+    } else {
+      prev = this[0]
+      for (var i = 1; i < this.length; i++) {
+        prev = f(prev, this[i], i, this)
+      }
     }
     return prev
   },
