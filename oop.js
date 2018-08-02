@@ -49,11 +49,67 @@ MySet.prototype = {
 }
 
 
-function MyMap(ary) {
-  for (var i = 0; i < ary.length; i++) {
-    this[ary[i][0]] = ary[i][1]
+function MyMap(maps) {
+  if (!(this instanceof MyMap)) {
+    return new MyMap(maps)
+  }
+  if (!Array.isArray(maps)) {
+    throw new Error('MyMap 仅支持接收二维数组')
+  }
+  this._keys = []
+  this._values = []
+
+  for (var pair of maps) {
+    this.set(pair[0], pair[1])
   }
 }
+
+function indexOf(ary, val) {
+  if (val !== val) {
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] !== ary[i]) {
+        return i
+      }
+    }
+  } else {
+    return ary.indexOf(val)
+  }
+}
+MyMap.prototype.get = function(key) {
+  var idx = indexOf(this._keys, key)
+  if (idx >= 0) {
+    return this._values[idx]
+  } else {
+    return undefined
+  }
+}
+MyMap.prototype.set = function(key, value) {
+  idx = indexOf(this._keys, key)
+  if (idx >= 0) {
+    this._values[idx] = value
+  } else {
+    this._keys.push(key)
+    this._values.push(value)
+  }
+  return this
+}
+MyMap.prototype.has = function(key) {
+  return indexOf(this._keys, key) >= 0
+}
+MyMap.prototype.delete = function(key) {
+  var idx = indexOf(this._keys, key)
+  if (idx >= 0) {
+    this._keys.splice(idx, 1)
+    this._values.splice(idx, 1)
+  }
+  return this
+}
+MyMap.prototype.clear = function() {
+  this._keys = []
+  this._values = []
+  return this
+}
+
 
 
 function MyArray(...values) {
