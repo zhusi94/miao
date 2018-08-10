@@ -749,7 +749,7 @@
       return string.replace(/[\ \_\-][a-zA-Z]/g, function(s) {
           return s.toUpperCase()
         })
-        .replace(/[\ \_\-]/g, '')
+        .replace(/[\ \_\-]*/g, '')
         .replace(/^\w/, function(s) {
           return s.toLowerCase()
         })
@@ -773,5 +773,11 @@
     },
     escapeRegExp: function(string = '') {
       return string.replace(/([\^$.*+?()\[\]\{\}\|])/g, '\\$1')
+    },
+
+    kebabCase: function(string = '') {
+      str = str.toLowerCase()
+      return str.replace(/^([\ \_])+|([\ \_])+$/g, '')
+        .replace(/[\ \_]*/g, '-')
     },
   }
