@@ -749,7 +749,7 @@
       return string.replace(/[\ \_\-][a-zA-Z]/g, function(s) {
           return s.toUpperCase()
         })
-        .replace(/[\ \_\-]*/g, '')
+        .replace(/[\ \_\-]+|\s+/g, '')
         .replace(/^\w/, function(s) {
           return s.toLowerCase()
         })
@@ -776,8 +776,126 @@
     },
 
     kebabCase: function(string = '') {
-      str = str.toLowerCase()
-      return str.replace(/^([\ \_])+|([\ \_])+$/g, '')
-        .replace(/[\ \_]*/g, '-')
+      string = string.toLowerCase()
+      return string.replace(/^([\ \_])+|([\ \_])+$/g, '')
+        .replace(/(?!^)[\ \_]+(?!$)/g, '-')
+    },
+    lowerCase: function(string = '') {
+      string = string.replace(/^(\s|[\-\_])+|(\s|[\-\_])+$/g, '')
+        .replace(/(?<=[a-zA-Z])(\s|[\-\_])+(?=[a-zA-Z])|(?<=[a-z])(\s|[\-\_])*(?=[A-Z])/g, ' ')
+      string = string.toLowerCase()
+      return string
+    },
+    lowerFirst: function(string = '') {
+      return string[0].toLowerCase() + string.slice(1)
+    },
+    pad: function(string = '', length = 0, chars = ' ') {
+      var len = string.length
+      if (len < length) {
+        var c = length - len
+        var m = Math.floor(c / 2)
+        var h = c - m
+        var cont = 0
+        var p = ''
+        for (var i = 0; i < m; i++) {
+          p += chars[cont++]
+          if (cont >= chars.length) {
+            cont = 0
+          }
+        }
+        string = p + string
+        for (var i = 0; i < h; i++) {
+          string += chars[cont++]
+          if (cont >= chars.length) {
+            cont = 0
+          }
+        }
+        return string
+      } else {
+        return string
+      }
+    },
+
+    padEnd: function(string = '', length = 0, chars = ' ') {
+      var len = string.length
+      if (len < length) {
+        var c = length - len
+        var cont = 0
+        for (var i = 0; i < c; i++) {
+          string += chars[cont++]
+          if (cont >= chars.length) {
+            cont = 0
+          }
+        }
+        return string
+      } else {
+        return string
+      }
+    },
+
+    padStart: function(string = '', length = 0, chars = ' ') {
+      var len = string.length
+      if (len < length) {
+        var c = length - len
+        var cont = 0
+        var p = ''
+        for (var i = 0; i < c; i++) {
+          p += chars[cont++]
+          if (cont >= chars.length) {
+            cont = 0
+          }
+        }
+        return p + string
+      } else {
+        return string
+      }
+    },
+
+    repeat: function(string = '', n = 1) {
+      for (var i = 0; i < n; i++) {
+        string += string
+      }
+      return string
+    },
+    replace: function(string = '', pattern, replacement) {
+      return string.replace(pattern, replacement)
+    },
+    snakeCase(string = '') {
+      string = string.toLowerCase()
+      return string.replace(/^(\s|[\-\_])+|(\s|[\-\_])+$/g, '')
+        .replace(/(?<=[a-z])(\s|[\-\_])+(?=[a-z])/g, '_')
+    },
+    split: function(string = '', separator, limit) {
+      var result = []
+
+    },
+    startCase: function(string = '') {
+      return string.replace(/(?<![a-zA-Z])[a-zA-Z]/g, function(s) {
+          return s.toUpperCase()
+        })
+        .replace(/^(\s|[\-\_])+|(\s|[\-\_])+$/g, '')
+        .replace(/(?!^)(\s|[\-\_])+|(?<=[a-z])(?=[A-Z])/g, ' ')
+    },
+
+    startsWith: function(string = '', target, position = 0) {
+      return string[position] == target
+    },
+    toLower: function(string = '') {
+      var s = string.split('')
+      for (var i = 0; i < s.length; i++) {
+        if (string.charCodeAt(i) >= 65 && string.charCodeAt(i) <= 90) {
+          s[i] = String.fromCharCode(string.charCodeAt(i) + 32)
+        }
+      }
+      return s.join('')
+    },
+    toUpper: function(string = '') {
+      var s = string.split('')
+      for (var i = 0; i < s.length; i++) {
+        if (string.charCodeAt(i) >= 97 && string.charCodeAt(i) <= 122) {
+          s[i] = String.fromCharCode(string.charCodeAt(i) - 32)
+        }
+      }
+      return s.join('')
     },
   }
