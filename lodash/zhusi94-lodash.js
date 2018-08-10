@@ -94,15 +94,20 @@
         f = function(obj) {
           return obj[h]
         }
+      } else if (Array.isArray(f)) {
+        var dif = []
+        for (var i = 1; i < arguments.length; i++) {
+          dif = [...dif, ...arguments[i]]
+        }
+        return array1.filter(item => dif.indexOf(item) == -1)
+      } else {
+        var dif = []
+        for (var i = 1; i < arguments.length - 1; i++) {
+          var tmp = arguments[i].map(x => f(x))
+          dif = [...dif, ...tmp]
+        }
+        return array1.filter(item => dif.indexOf(f(item)) == -1)
       }
-      var dif = []
-
-      for (var i = 1; i < arguments.length - 1; i++) {
-        var tmp = arguments[i].map(x => f(x))
-        dif = [...dif, ...tmp]
-      }
-
-      return array1.filter(item => dif.indexOf(f(item)) == -1)
     },
 
     negate: function(f) {
