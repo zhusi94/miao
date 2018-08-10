@@ -562,7 +562,7 @@
       return propA == propB
     },
     isNaN: function(val) {
-      return Object.prototype.toString.call(value) === '[object Number]' && isNaN(value)
+      return Object.prototype.toString.call(val) === '[object Number]' && isNaN(val)
     },
     matches: function(source) {
       return function(object) {
@@ -746,7 +746,7 @@
 
     camelCase: function(string = '') {
       string = string.toLowerCase()
-      return string.replace(/[\ \_\-]\w/g, function(s) {
+      return string.replace(/[\ \_\-][a-zA-Z]/g, function(s) {
           return s.toUpperCase()
         })
         .replace(/[\ \_\-]/g, '')
