@@ -549,8 +549,8 @@
 
     },
     isMatch: function(object, source) {
-      for (var key in object) {
-        if (!zhusi94.isEqual(boject[key], source[key])) {
+      for (var key in source) {
+        if (!zhusi94.isEqual(object[key], source[key])) {
           return false
         }
       }
@@ -564,24 +564,24 @@
       if (val !== val && other !== other) {
         return true
       }
-      if (val == null || typeof(value) != 'object' || typeof(other) != 'object' || other == null) return false
+      if ((val == null || typeof(val) != 'object') || (typeof(other) != 'object' || other == null)) {
+        return false
+      }
       let propA = 0
       let propB = 0
-      for (let prop in value) {
+      for (let prop in val) {
         propA++
       }
       for (let prop in other) {
         propB++
-        if (!(prop in value) || !isEqual(value[prop], other[prop])) return false
+        if (!(prop in val) || !zhusi94.isEqual(val[prop], other[prop])) {
+          return false
+        }
       }
       return propA == propB
     },
     isNaN: function(val) {
-      if (val !== val) {
-        return true
-      } else {
-        return false
-      }
+      return isNumber(obj) && obj != +obj
     },
     matches: function(source) {
       return function(object) {
@@ -674,7 +674,7 @@
       var f = zhusi94.iteratee(predicate)
       // return !zhusi94.every(collection,negate(f))
 
-      for (var itrm of collection) {
+      for (var item of collection) {
         if (f(item)) {
           return true
         }
@@ -683,6 +683,9 @@
     },
 
     castArray: function(array) {
+      if (array == undefined) {
+        return []
+      }
       if (Array.isArray(array)) {
         return array
       } else {
@@ -724,5 +727,70 @@
         }
       }
       return result
+    },
+    countBy: function(collection, iteratee = _.identity) {
+      var result = {}
+      if (iteratee == undefined) {
+        for (var i = 0; i < collection.length; i++) {
+          result[collection[i]] = 1
+        }
+      } else {
+        var f = zhusi94.iteratee(iteratee)
+
+        for (var i = 0; i < collection.length; i++) {
+          if (f(collection[i]) in result) {
+            result[f(collection[i])]++
+          } else {
+            result[f(collection[i])] = 1
+          }
+        }
+      }
+      return result
+    },
+    forEachRight: function(collection, iteratee = _.identity) {
+      var r = []
+      for (var key in collection) {
+        r.unshift(key)
+      }
+      for (var i = 0; i < r.length; i++) {
+        iteratee(collection[i])
+      }
+      return collection
+    },
+
+
+
+    //String方法：
+
+
+    camelCase: function(string = '') {
+      string = string.toLowerCase()
+      return string.replace(/(?!^)\b\w/g, function(s) {
+          return s.toUpperCase()
+        })
+        .replace(/[ \-_]/g, '')
+        .replace(/^\w/, function(s) {
+          return s.toLowerCase()
+        })
+    },
+
+    capitalize: function(string = '') {
+      string = string.toLowerCase()
+      return string.replace(/^\w/, function(s) {
+        return s.toUpperCase()
+      })
+    },
+    endsWith: function(string = '', target, position = string.length) {
+      return string[position - 1] == target
+    },
+    escape: function(string = '') {
+      return string.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39")
+    },
+    escapeRegExp: function(string = '') {
+      return string.replace(/([\^$.*+?()\[\]\{\}\|])/g, '\\$1')
     },
   }
