@@ -76,16 +76,7 @@
     sum: function(ary) {
       return zhusi94.sumBy(ary, zhusi94.identity)
     },
-    matches: function(src) {
-      return function(obj) {
-        for (var key in src) {
-          if (src[key] != obj[key]) {
-            return false
-          }
-        }
-        return true
-      }
-    },
+
 
     differenceBy: function(array1, ...values) {
       var f = arguments[arguments.length - 1]
@@ -537,17 +528,7 @@
     },
 
 
-    iteratee: function(func = zhusi94.identity) {
-      if (typeof func == 'function') {
-        return func
-      }
-      if (typeof func == 'string') {
-        return function(func) {
-          return func
-        }
-      }
 
-    },
     isMatch: function(object, source) {
       for (var key in source) {
         if (!zhusi94.isEqual(object[key], source[key])) {
@@ -581,16 +562,16 @@
       return propA == propB
     },
     isNaN: function(val) {
-      return isNumber(obj) && obj != +obj
+      return isNumber(val) && val != +val
     },
     matches: function(source) {
       return function(object) {
         for (var key in source) {
-          if (!zhusi94.isEqual(source[key], object[key])) {
+          if (!zhusi94.isEqual(object[key], source[key])) {
             return false
           }
-          return true
         }
+        return true
       }
     },
     matchesProperty: function(pro, val) {
@@ -683,7 +664,7 @@
     },
 
     castArray: function(array) {
-      if (array == undefined) {
+      if (arguments.length == 0) {
         return []
       }
       if (Array.isArray(array)) {
@@ -768,7 +749,7 @@
       return string.replace(/(?!^)\b\w/g, function(s) {
           return s.toUpperCase()
         })
-        .replace(/[ \-_]/g, '')
+        .replace(/[\ \_\-]/g, '')
         .replace(/^\w/, function(s) {
           return s.toLowerCase()
         })
