@@ -94,7 +94,6 @@
         f = function(obj) {
           return obj[h]
         }
-
       } else if (Array.isArray(f)) {
         var dif = []
         for (var i = 1; i < arguments.length; i++) {
@@ -712,5 +711,18 @@
         }
       }
     },
-
+    filter: function(collection, predicate = _.identity) {
+      if (predicate == undefined) {
+        return collection
+      } else {
+        var f = zhusi94.iteratee(predicate)
+      }
+      var result = []
+      for (var i = 0; i < collection.length; i++) {
+        if (f(collection[i])) {
+          result.push(collection[i])
+        }
+      }
+      return result
+    },
   }
