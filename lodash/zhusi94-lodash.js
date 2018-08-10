@@ -123,6 +123,16 @@
       return array.slice(n, array.length)
     },
 
+    dropWhile: function(array, predicate = zhusi94.identity) {
+      f = zhusi94.iteratee(predicate)
+      for (var i = 0; i < array.length; i++) {
+        if (!f(array[i])) {
+          break
+        }
+      }
+      return array.slice(i, array.length)
+    },
+
     dropRight: function(array, n = 1) {
       if (n > array.length) {
         n = array.length
@@ -131,7 +141,13 @@
     },
 
     dropRightWhile: function(array, predicate = zhusi94.identity) {
-
+      f = zhusi94.iteratee(predicate)
+      for (var i = array.length - 1; i >= 0; i--) {
+        if (!f(array[i])) {
+          break
+        }
+      }
+      return array.slice(0, i + 1)
     },
 
     fill: function(array, value, start = 0, end = array.length) {
@@ -547,7 +563,7 @@
       if (val !== val && other !== other) {
         return true
       }
-      if (value == null || typeof(value) != 'object' || typeof(other) != 'object' || other == null) return false
+      if (val == null || typeof(value) != 'object' || typeof(other) != 'object' || other == null) return false
       let propA = 0
       let propB = 0
       for (let prop in value) {
@@ -612,7 +628,7 @@
 
       // isString
       if (typeof iter === 'string') {
-        return sanvvv.property(iter)
+        return zhusi94.property(iter)
       }
 
       // isFunction
