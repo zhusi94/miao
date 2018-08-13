@@ -746,7 +746,7 @@
 
     camelCase: function(string = '') {
       string = string.toLowerCase()
-      return string.replace(/\s|[\_\-][a-zA-Z]/g, function(s) {
+      return string.replace(/(?<=\s|[\_\-])[a-z]/g, function(s) {
           return s.toUpperCase()
         })
         .replace(/[\ \_\-]+|\s+/g, '')
@@ -854,6 +854,9 @@
 
     repeat: function(string = '', n = 1) {
       var s = string
+      if (n == 0) {
+        return ''
+      }
       for (var i = 2; i <= n; i++) {
         string += s
       }
