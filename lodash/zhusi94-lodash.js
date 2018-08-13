@@ -746,7 +746,7 @@
 
     camelCase: function(string = '') {
       string = string.toLowerCase()
-      return string.replace(/[\ \_\-][a-zA-Z]/g, function(s) {
+      return string.replace(/\s|[\_\-][a-zA-Z]/g, function(s) {
           return s.toUpperCase()
         })
         .replace(/[\ \_\-]+|\s+/g, '')
@@ -776,9 +776,10 @@
     },
 
     kebabCase: function(string = '') {
+      string = string.replace(/(?<=[a-z])(?=[A-Z])/g, '-')
       string = string.toLowerCase()
-      return string.replace(/^([\ \_])+|([\ \_])+$/g, '')
-        .replace(/(?!^)[\ \_]+(?!$)/g, '-')
+      return string.replace(/\-+|\_+|\s+/g, '-')
+        .replace(/^\-+|\-+$/g, '')
     },
     lowerCase: function(string = '') {
       string = string.replace(/^(\s|[\-\_])+|(\s|[\-\_])+$/g, '')
@@ -852,8 +853,9 @@
     },
 
     repeat: function(string = '', n = 1) {
-      for (var i = 0; i < n; i++) {
-        string += string
+      var s = string
+      for (var i = 2; i <= n; i++) {
+        string += s
       }
       return string
     },
@@ -861,13 +863,33 @@
       return string.replace(pattern, replacement)
     },
     snakeCase(string = '') {
+      string = string.replace(/(?<=[a-z])(?=[A-Z])/g, '_')
       string = string.toLowerCase()
       return string.replace(/^(\s|[\-\_])+|(\s|[\-\_])+$/g, '')
         .replace(/(?<=[a-z])(\s|[\-\_])+(?=[a-z])/g, '_')
     },
-    split: function(string = '', separator, limit) {
+    split: function(string = '', separator, limit = Infinity) {
       var result = []
-
+      var i = 0
+      var j = 0
+      var cont = 0
+      while (j < string.length) {
+        if (string[j] == separator) {
+          result.push(string.slice(i, j))
+          j++
+          i = j
+          cont++
+          if (cont == limit) {
+            return result
+          }
+        } else {
+          j++
+        }
+      }
+      if (string.slice(i) != '') {
+        result.push(string.slice(i))
+      }
+      return result
     },
     startCase: function(string = '') {
       return string.replace(/(?<![a-zA-Z])[a-zA-Z]/g, function(s) {
@@ -898,4 +920,136 @@
       }
       return s.join('')
     },
+
+    parseJson: function parse() {
+
+      var i = 0
+      return function parse(str) {
+        i = 0
+        return parseval()
+      }
+
+
+      function parseval() {
+        var c = str[i]
+        if (c === '[') {
+          return parseArray()
+        } else if (c === '{') {
+          return parseObject()
+        } else if (c === '\"') {
+          return parseString()
+        } else if (c === 't') {
+          return parseTrue()
+        } else if (c === 'f') {
+          return parseFalse()
+        } else if (c === 'n') {
+          return parseNull()
+        } else {
+          return parseNumber()
+        }
+      }
+
+
+      function parseString() {
+        for (var j = i + 1;; j++) {
+          if (str[j] === '"') {
+            break
+          }
+        }
+        var result = str.slice(i + 1, j)
+        i = j + 1
+        return result
+      }
+
+      function parseTrue() {
+        var token = str.slice(i, i + 4)
+        if (token === 'true') {
+          return true
+        } else {
+          throw new SyntaxEeeor('unexpected token' + i)
+        }
+      }
+
+      function parseFalse() {
+        var token = str.slice(i, i + 5)
+        if (token === 'false') {
+          return false
+        } else {
+          throw new SyntaxEeeor('unexpected token' + i)
+        }
+      }
+
+      function parseNull() {
+        var token = str.slice(i, i + 4)
+        if (token === 'null') {
+          return null
+        } else {
+          throw new SyntaxEeeor('unexpected token' + i)
+        }
+      }
+
+      function parseArray() {
+        i++
+        var result = []
+        var val
+        if (str[i] === ']') {
+          return result
+        }
+        for (;;) {
+          val = parse()
+          result.push(val)
+          if (str[i] === ',') {
+            i++
+            continue
+          } else if (str[i] === ']') {
+            i++
+            return result
+          }
+        }
+      }
+
+      function parseObject() {
+        i++
+        if (str[i] === '}') {
+          return {}
+        }
+        var result = {}
+        while (true) {
+          var key = parseString()
+          i++
+          var val = parseval()
+          result[key] = val
+          if (str[i] === ',') {
+            i++
+            continue
+          } else if (str[i] === '}') {
+            i++
+            return result
+          }
+        }
+      }
+
+      function isNumberChar(c) {
+        if (c >= '0' && c <= '9') {
+          return true
+        }
+        if (c === '+' || c === '-' || c === '.' || c === 'e' || c === 'E') {
+          return true
+        }
+        return false
+      }
+
+      function parseNumber() {
+        var j = i
+        while (isNumberChar(str[j])) {
+          j++
+        }
+        var nString = str.slice(i, j)
+        i = j
+        return parseFloat(nString)
+      }
+    }(),
+
+
+
   }
