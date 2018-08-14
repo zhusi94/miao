@@ -924,14 +924,15 @@
       return s.join('')
     },
 
-    parseJson: function parse() {
+    parseJson: function() {
 
       var i = 0
-      return function parse(str) {
+      var str
+      return function parse(strInput) {
         i = 0
+        str = strInput
         return parseval()
       }
-
 
       function parseval() {
         var c = str[i]
@@ -951,7 +952,6 @@
           return parseNumber()
         }
       }
-
 
       function parseString() {
         for (var j = i + 1;; j++) {
