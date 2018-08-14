@@ -967,6 +967,7 @@
       function parseTrue() {
         var token = str.slice(i, i + 4)
         if (token === 'true') {
+          i += 4
           return true
         } else {
           throw new SyntaxEeeor('unexpected token' + i)
@@ -976,6 +977,7 @@
       function parseFalse() {
         var token = str.slice(i, i + 5)
         if (token === 'false') {
+          i += 5
           return false
         } else {
           throw new SyntaxEeeor('unexpected token' + i)
@@ -985,6 +987,7 @@
       function parseNull() {
         var token = str.slice(i, i + 4)
         if (token === 'null') {
+          i += 4
           return null
         } else {
           throw new SyntaxEeeor('unexpected token' + i)
@@ -999,7 +1002,7 @@
           return result
         }
         for (;;) {
-          val = parse()
+          val = parseval()
           result.push(val)
           if (str[i] === ',') {
             i++
