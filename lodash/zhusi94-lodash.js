@@ -1060,16 +1060,19 @@
       var i = 0
       var j = string.length - 1
 
-      while (chars.includes(string[i])) {
+      while (chars.includes(string[i]) || chars == string[i]) {
         i++
       }
-      while (chars.includes(string[j])) {
+      while (chars.includes(string[j]) || chars == string[i]) {
         j--
       }
 
       return string.slice(i, j + 1)
     },
     trimEnd: function(string = '', chars = ' ') {
+      if (chars == ' ') {
+        return string.trimEnd()
+      }
       var j = string.length - 1
       while (chars.includes(string[j])) {
         j--
@@ -1077,6 +1080,9 @@
       return string.slice(0, j + 1)
     },
     trimStart(string = '', chars = ' ') {
+      if (chars == ' ') {
+        return string.trimStart()
+      }
       var j = 0
       while (chars.includes(string[j])) {
         j++
@@ -1115,10 +1121,10 @@
     },
 
     unescape: function(string = '') {
-      return string.replace(/(?<=\W)&amp(?=\W)/, '\&')
-        .replace(/(?<=\W)&lt(?=\W)/, '\<')
-        .replace(/(?<=\W)&gt(?=\W)/, '\>')
-        .replace(/(?<=\W)&quot(?=\W)/, '')
+      return string.replace(/(?<=\W)&amp;/, '\&')
+        .replace(/(?<=\W)&lt;/, '\<')
+        .replace(/(?<=\W)&gt;/, '\>')
+        .replace(/(?<=\W)&quot;/, '')
     },
     upperCase: function(string = '') {
       return string.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')
