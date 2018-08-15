@@ -1056,6 +1056,171 @@
       }
     }(),
 
+    trim: function(string = '', chars = ' ') {
+      var i = 0
+      var j = string.length - 1
+
+      while (chars.includes(string[i])) {
+        i++
+      }
+      while (chars.includes(string[j])) {
+        j--
+      }
+
+      return string.slice(i, j + 1)
+    },
+    trimEnd: function(string = '', chars = ' ') {
+      var j = string.length - 1
+      while (chars.includes(string[j])) {
+        j--
+      }
+      return string.slice(0, j + 1)
+    },
+    trimStart(string = '', chars = ' ') {
+      var j = 0
+      while (chars.includes(string[j])) {
+        j++
+      }
+      return string.slice(j)
+    },
+    truncate: function(string = '', options = {}) {
+      var length = 30
+      var omission = '...'
+      var separator = ''
+      if (options.length) {
+        length = options.length
+      }
+      if (options.omission) {
+        omission = options.omission
+      }
+      if (options.separator) {
+        if (typeof options.separator === 'string') {
+          separator = options.separator
+          string = string.split(separator)
+          string.pop()
+          string = string.join(separator)
+        } else {
+          separator = new RegExp(options.separator, 'g')
+          separator = string.match(separator).pop()
+          string = string.slice(0, string.lastIndexOf(separator))
+        }
+      }
 
 
+      if (string.length + omission.length > length) {
+        return string.slice(0, 30 - omission.length).concat(omission)
+      } else {
+        return string.concat(omission)
+      }
+    },
+
+    unescape: function(string = '') {
+      return string.replace(/(?<=\W)&amp(?=\W)/, '\&')
+        .replace(/(?<=\W)&lt(?=\W)/, '\<')
+        .replace(/(?<=\W)&gt(?=\W)/, '\>')
+        .replace(/(?<=\W)&quot(?=\W)/, '')
+    },
+    upperCase: function(string = '') {
+      return string.replace(/(?<=[a-z])(?=[A-Z])/g, ' ')
+        .replace(/^(\s|\-|\_)+|(\s|\-|\_)+$/g, '')
+        .replace(/(\s|\-|\_)+/g, ' ').toUpperCase()
+    },
+    upperFirst: function(string = '') {
+      return string.replace(/^(\s|\-|\_)+|(\s|\-|\_)+$/g, '').replace(/^\w/, it => it.toUpperCase())
+    },
+    words: function(string = '', pattern) {
+      if (pattern == undefined) {
+        return string.match(/\b\w+\b/g)
+      } else {
+        return string.match(pattern)
+      }
+    },
+
+    bindAll: function(object, ...methodNames) {
+      for (var i = 0; i < methodNames.length; i++) {
+        if (typeof methodNames[i] === 'string') {
+          object[methodNames[i]] = object[methodNames[i]].bind(object)
+        } else {
+          object[methodNames[i][0]] = object[methodNames[i][0]].bind(object)
+        }
+      }
+    },
+    defaultTo: function(value, defaultValue) {
+      if (zhusi94.isNaN(value)) {
+        return defaultValue
+      }
+      if (value === null || value === undefined) {
+        return defaultValue
+      }
+      return value
+    },
+
+    range(start = 0, end, step = 1) {
+      var result = []
+      if (arguments.length == 1) {
+        end = arguments[0]
+        start = 0
+        step = 1
+      }
+      if (step < 0) {
+        step = -step
+      }
+      if (step === 0) {
+        var c = Math.abs(end - start)
+        for (var i = 0; i < c; i++) {
+          result.push(start)
+        }
+        return result
+      }
+      if (end >= start) {
+        for (var i = start; i < end; i += step) {
+          result.push(i)
+        }
+      } else {
+        for (var i = start; i > end; i -= step) {
+          result.push(i)
+        }
+      }
+      return result
+    },
+    rangeRight(start = 0, end, step = 1) {
+      var result = []
+      if (arguments.length == 1) {
+        end = arguments[0]
+        start = 0
+        step = 1
+      }
+      if (step < 0) {
+        step = -step
+      }
+      if (step === 0) {
+        var c = Math.abs(end - start)
+        for (var i = 0; i < c; i++) {
+          result.unshift(start)
+        }
+        return result
+      }
+      if (end >= start) {
+        for (var i = start; i < end; i += step) {
+          result.unshift(i)
+        }
+      } else {
+        for (var i = start; i > end; i -= step) {
+          result.unshift(i)
+        }
+      }
+      return result
+    },
+    times: function(n, iteratee = zhusi94.identity) {
+      var result = []
+      for (var i = 0; i < n; i++) {
+        result.push(iteratee(i))
+      }
+      return result
+    },
+    constant: function(value) {
+      return function() {
+        return value
+      }
+    },
   }
