@@ -1057,6 +1057,9 @@
     }(),
 
     trim: function(string = '', chars = ' ') {
+      if (chars == ' ') {
+        return string.trim()
+      }
       var i = 0
       var j = string.length - 1
 
