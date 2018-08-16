@@ -1232,4 +1232,82 @@
         return value
       }
     },
+    gt: function(value, other) {
+      return value > other
+    },
+    gte: function(value, other) {
+      return value >= other
+    },
+    isArguments: function(value) {
+      return Object.prototype.toString.call(value) === '[object Arguments]'
+    },
+    isArrayBuffer: function(value) {
+      return Object.prototype.toString.call(value) === '[object ArrayBuffer]'
+    },
+    isArrayLike: function(value) {
+      return value.length !== undefined && typeof value !== 'function'
+    },
+    isArrayLikeObject: function(value) {
+      return value.length !== undefined && typeof value === 'object'
+    },
+    isNil: function(value) {
+      if (value !== value) {
+        return false
+      }
+      if (value == null || value == undefined) {
+        return true
+      } else {
+        return false
+      }
+    },
+    isBoolean: function(value) {
+      return Object.prototype.toString.call(value) === '[object Boolean]'
+    },
+    isDate: function(value) {
+      return Object.prototype.toString.call(value) === '[object Date]'
+    },
+    isElement: function(value) {
+      return value !== null && typeof value === 'object' && value.nodeType === Node.ELEMENT_NODE
+    },
+    isEmpty: function(value) {
+      if (typeof value !== 'object') {
+        return true
+      } else {
+        for (var key in value) {
+          if (value.hasOwnProperty(key)) {
+            return false
+          }
+        }
+        return false
+      }
+    },
+    isError: function(value) {
+      return value instanceof Error
+    },
+    isFinite: function(value) {
+      return Object.prototype.toString.call(value) === '[object Number]' && value !== Infinity && value !== -Infinity
+    },
+    isFunction: function(value) {
+      return value instanceof Function
+    },
+    isInteger: function(value) {
+      if (zhusi94.isFinite(value)) {
+        var q = Math.abs(value)
+        while (q >= 0) {
+          q--
+          if (q == 0) {
+            return true
+          }
+        }
+        return false
+      } else {
+        return false
+      }
+    },
+    isLength: function(value) {
+      return zhusi94.isInteger(value) && value >= 0
+    },
+    isMap: function(value) {
+      return Object.prototype.toString.call(value) === '[object Map]'
+    },
   }
