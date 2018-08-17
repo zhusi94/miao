@@ -1270,6 +1270,9 @@
       return value !== null && typeof value === 'object' && value.nodeType === Node.ELEMENT_NODE
     },
     isEmpty: function(value) {
+      if (value === null) {
+        return true
+      }
       if (typeof value !== 'object') {
         return true
       } else {
