@@ -1321,10 +1321,10 @@
       }
     },
     isNull: function(val) {
-      return Object.prototype.toString.call(value) === '[object Null]'
+      return Object.prototype.toString.call(val) === '[object Null]'
     },
     isNumber: function(val) {
-      return Object.prototype.toString.call(value) === '[object Number]'
+      return Object.prototype.toString.call(val) === '[object Number]'
     },
     isObject: function(val) {
       var type = typeof val
