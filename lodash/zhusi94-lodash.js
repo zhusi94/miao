@@ -1313,4 +1313,38 @@
     isMap: function(value) {
       return Object.prototype.toString.call(value) === '[object Map]'
     },
+    forOwn: function(obj, iteratee = zhusi94.identity) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          iteratee(obj[key], key)
+        }
+      }
+    },
+    isNull: function(val) {
+      return Object.prototype.toString.call(value) === '[object Null]'
+    },
+    isNumber: function(val) {
+      return Object.prototype.toString.call(value) === '[object Number]'
+    },
+    isObject: function(val) {
+      var type = typeof val
+      return val !== null && (type == 'object' || type == 'function')
+    },
+    isObjectLike: function(val) {
+      return typeof val == 'object' && val !== null
+    },
+    isPlainObject: function(val) {
+      if (!zhusi94.isObject(val)) {
+        return false
+      }
+      var p = Object.getPrototypeOf(val)
+
+      if (val.constructor !== Object) {
+        return false
+      }
+      if (p !== Object.prototype && p !== null) {
+        return false
+      }
+      return true
+    },
   }
